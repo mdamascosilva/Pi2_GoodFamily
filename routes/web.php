@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BeneficiarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
+
+Route::get('/beneficiario/cadastrar', [BeneficiarioController::class, 'cadastro']);
+
+Route::post('/beneficiario/cadastrar', [BeneficiarioController::class, 'gravar']);
+
+Route::get('/beneficiario/alterar/{id}', [BeneficiarioController::class, 'alterar']);
+
+Route::post('/beneficiario/alterar/{id}', [BeneficiarioController::class, 'atualizar']);
+
+Route::post('/beneficiario/excluir/{id}', [BeneficiarioController::class, 'excluir']);
+
+Route::get('/beneficiario/consultar/{id}', [BeneficiarioController::class, 'consultar']);
+
+Route::get('/beneficiario/listar', [BeneficiarioController::class, 'listar']);
