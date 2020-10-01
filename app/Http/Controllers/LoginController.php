@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Models\Beneficiario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,9 +27,16 @@ class LoginController extends Controller{
         $remember = $request->get('remember');
 
         if (Auth::attempt($credentials, $remember)){
-            return redirect('/');
+            $user = Auth::user();
+
+            if (Beneficiario::find($user->id)){
+                return redirect('/');
+            } else {
+                return view('/Auth/cadastro_incompleto', ['user' => $user]);
+            }
+
         } else {
-            echo "Erro no login";
+            return view('/Auth/login', ['mensagem' => 'Erro ao efetuar o login, favor tentar novamente']);
         }
     }
 
@@ -41,5 +49,16 @@ class LoginController extends Controller{
     public function logout(){
         Auth::logout();
         return redirect('/');
+    }
+
+    public function finalizarCadastro(string $opcao){
+        $user = Auth::user();
+
+        if ($opcao == "beneficiario"){
+            return redirect('/beneficiario/cadastrar/' .$user->id );
+           
+        } else if ($opcao == "apoiador"){
+            return redirect('/apoiador/cadastrar/'.$user->id );
+        }
     }
 }

@@ -39,17 +39,17 @@
                     
                     <div>
                         <label for="senha_atual">Senha atual</label>
-                        <input type="password" id="senha_atual" name="senha_atual">
-                    </div>
-
-                    <div>
-                        <label for="password">Nova senha</label>
                         <input type="password" id="password" name="password">
                     </div>
 
                     <div>
+                        <label for="password">Nova senha</label>
+                        <input type="password" id="new_password" name="new_password">
+                    </div>
+
+                    <div>
                         <label for="confirm">Confirmar nova senha</label>
-                        <input type="password" id="confirm" name="confirm">
+                        <input type="password" id="confirm_password" name="confirm_password">
                     </div>
                 
                     <div>

@@ -35,8 +35,6 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-                    <input type="hidden" name="email" value="{{ $user->email ?? '' }}">
-
                     <div>
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" value="{{ $user->name }}" name="nome">
@@ -51,30 +49,65 @@
                         <label for="telefone">Telefone</label>
                         <input type="text" id="telefone" name="telefone">
                     </div>
-                    
+
                     <div>
-                        <label for="endereco">Endereço</label>
-                        <input type="text" id="endereco" name="endereco">
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep">
+                    </div>
+
+                    <div>
+                        <label for="estado">Estado</label>
+
+                        <select onchange="getCidades()" id="estado" name="estado">
+                            <option selected disabled>Selecione uma opção</option>
+                            
+                            <option key="1" value="AC" >Acre</option>
+                            <option key="2" value="AL" >Alagoas</option>
+                            <option key="3" value="AP" >Amapá</option>
+                            <option key="4" value="AM" >Amazonas</option>
+                            <option key="5" value="BA" >Bahia</option>
+                            <option key="6" value="CE" >Ceará</option>
+                            <option key="7" value="ES" >Espirito Santo</option>
+                            <option key="8" value="GO" >Goias</option>
+                            <option key="9" value="MA" >Maranhão</option>
+                            <option key="10" value="MT" >Mato Grosso</option>
+                            <option key="11" value="MS" >Mato Grosso do Sul</option>
+                            <option key="12" value="MG" >Minas Gerais</option>
+                            <option key="13" value="PA" >Pará</option>
+                            <option key="14" value="PB" >Paraíba</option>
+                            <option key="15" value="PR" >Paraná</option>
+                            <option key="16" value="PE" >Pernambuco</option>
+                            <option key="17" value="PI" >Piauí</option>
+                            <option key="18" value="RJ" >Rio de Janeiro</option>
+                            <option key="19" value="RN" >Rio Grande do Norte</option>
+                            <option key="20" value="RS" >Rio Grande do Sul</option>
+                            <option key="21" value="RO" >Rondônia</option>
+                            <option key="22" value="RR" >Roraima</option>
+                            <option key="23" value="SC" >Santa Catarina</option>
+                            <option key="24" value="SP" >São Paulo</option>
+                            <option key="25" value="SE" >Sergipe</option>
+                            <option key="26" value="TO" >Tocantins</option>
+                            <option key="26" value="DF" >Distrito Federal</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="cidade">Cidade</label>
+                        <select onchange="getBairros()" id="cidade" name="cidade">
+                            <option selected disabled>-</option>
+                        </select>
                     </div>
 
                     <div>
                         <label for="bairro">Bairro</label>
-                        <input type="text" id="bairro" name="bairro">
+                        <select id="bairro" name="bairro">
+                            <option selected disabled>-</option>
+                        </select>
                     </div>
                     
                     <div>
-                        <label for="cidade">Cidade</label>
-                        <input type="text" id="cidade" name="cidade">
-                    </div>
-                    
-                    <div>
-                        <label for="estado">Estado</label>
-                        <input type="text" id="estado" name="estado">
-                    </div>
-                    
-                    <div>
-                        <label for="cep">CEP</label>
-                        <input type="text" id="cep" name="cep">
+                        <label for="endereco">Endereço</label>
+                        <input type="text" id="endereco" name="endereco">
                     </div>
                     
                     <div>
@@ -83,5 +116,9 @@
                 </form>
             </div>
         </div>
+
+        <script src='/js/request.js'></script>
+        <script src='/js/getCidade.js'></script>
+        <script src='/js/getBairro.js'></script>
     </body>
 </html>

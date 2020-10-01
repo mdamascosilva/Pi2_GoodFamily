@@ -55,7 +55,7 @@
                     </div>
                 
                     <div>
-                        <button type="submit" class="btn btn-default">Login</button>
+                        <button type="submit" class="btn btn-default">Registrar</button>
                     </div>
                 </form>
             </div>

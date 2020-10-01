@@ -21,6 +21,14 @@
                 </div>
         @endif
 
+        @if ($mensagem ?? '')
+            <div class="alert alert-danger">
+                <ul>
+                    <li> {{ $mensagem }} </li>
+                </ul>
+            </div>
+        @endif
+
 
         <div class="container">
             <h2>Login</h2>

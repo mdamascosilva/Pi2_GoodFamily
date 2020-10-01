@@ -19,7 +19,7 @@
         <div class="autenticacao">
             @if ($user ?? '')
                 <p>Seja bem vindo, <a href="/{{$user->user_type}}/consultar">{{$user->name}}</a></p>
-                <p><a href="/{{$user->user_type}}/alterar">Alterar informações</a></p>
+                <p><a href="/{{$user->user_type}}/alterar/{{$user->id}}">Alterar informações</a></p>
                 <p><a href="/senha">Trocar senha</a></p>
                 <p><a href="/logout">Sair</a></p>
             @else

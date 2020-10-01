@@ -3,6 +3,7 @@
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegioesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,29 +20,33 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 
+
 Route::get('/beneficiario/cadastrar/{id}', [BeneficiarioController::class, 'cadastro']);
 
 Route::post('/beneficiario/cadastrar/{id}', [BeneficiarioController::class, 'gravar']);
 
-Route::get('/beneficiario/alterar', [BeneficiarioController::class, 'alterar']);
+Route::get('/beneficiario/alterar/{id}', [BeneficiarioController::class, 'alterar']);
 
-Route::post('/beneficiario/alterar', [BeneficiarioController::class, 'atualizar']);
+Route::post('/beneficiario/alterar/{id}', [BeneficiarioController::class, 'atualizar']);
 
-Route::post('/beneficiario/excluir', [BeneficiarioController::class, 'excluir']);
+Route::post('/beneficiario/excluir/{id}', [BeneficiarioController::class, 'excluir']);
 
 Route::get('/beneficiario/consultar', [BeneficiarioController::class, 'consultar']);
 
 Route::get('/beneficiario/listar', [BeneficiarioController::class, 'listar']);
 
+
 Route::get('/apoiador/cadastrar/{id}', function () {
     return view('/Apoiadores/cadastrar');
 });
+
 
 Route::get('/login', [LoginController::class, 'login']);
 
 Route::post('/login', [LoginController::class, 'autenticar']);
 
 Route::get('/logout', [LoginController::class, 'logout']);
+
 
 Route::get('/senha', [UserController::class, 'alterarSenha']);
 
@@ -50,3 +55,10 @@ Route::post('/senha', [UserController::class, 'gravarNovaSenha']);
 Route::get('/registrar/{opcao}', [UserController::class, 'registro']);
 
 Route::post('/registrar/{opcao}', [UserController::class, 'registrar']);
+
+
+Route::get('/regiao/{uf}', [RegioesController::class, 'getRegiao']);
+
+Route::get('/cidade/{regiao}', [RegioesController::class, 'getCidade']);
+
+Route::get('/bairro/{cidade}', [RegioesController::class, 'getBairro']);

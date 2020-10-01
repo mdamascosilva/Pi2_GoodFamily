@@ -50,12 +50,14 @@ class UserController extends Controller{
 
         $credentials = $request->only('email', 'password');
 
-        if ((Auth::attempt($credentials)) && 
-        $request->get('password') == $request->get('confirm')){
 
-            $user->password = Hash::make($request->get('password'));
+        if ((Auth::attempt($credentials)) && 
+        $request->get('new_password') == $request->get('confirm_password')){
+
+            $user->password = Hash::make($request->get('new_password'));
             $user->update();
             return view('/index', ['mensagem' => 'Senha alterada com sucesso']);
+            
         } else {
             return view('/Auth/senha', ['user' => Auth::user(), 'mensagem' => 'Erro ao gravar senha, favor tentar novamente']);
         }

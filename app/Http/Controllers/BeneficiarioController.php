@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BeneficiarioRequest;
 use App\Models\Beneficiario;
+use App\Models\Cidade;
+use App\Models\Bairro;
 use Illuminate\Support\Facades\Auth;
+
 use App\Models\User;
 
 class BeneficiarioController extends Controller
@@ -30,9 +33,14 @@ class BeneficiarioController extends Controller
         return view('index', ['mensagem' => 'Beneficiário criado com sucesso! ' . $beneficiario->id . 'Usuario ' . $user->id]);
     }
 
-    public function alterar(){
+    public function alterar(RegioesController $regioesController){
         $id = Auth::id();
-        return view('/Beneficiarios/alterar', ['beneficiario' => Beneficiario::findOrFail($id)]);
+        $beneficiario = Beneficiario::findOrFail($id);
+        $uf = $beneficiario->estado;
+        $cidade = $beneficiario->cidade;
+        return view('/Beneficiarios/alterar', [ 'beneficiario' => $beneficiario, 
+                                                'cidades' => $regioesController->cidades($uf), 
+                                                'bairros' => $regioesController->bairros($cidade) ]);
     }
 
     public function atualizar( BeneficiarioRequest $request, Beneficiario $beneficiario){
@@ -66,6 +74,7 @@ class BeneficiarioController extends Controller
 
     public function consultar(){
         $id = Auth::id();
+
         return view('/Beneficiarios/consultar', ['beneficiario' => Beneficiario::findOrFail($id)]);
     }
 }
