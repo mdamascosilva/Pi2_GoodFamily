@@ -26,6 +26,7 @@ class RegioesController extends Controller
                     ->select('localidades.cidade_id as id', 'cidades.cidade as cidade')
                     ->where('localidades.uf', '=', $uf)
                     ->groupBy('localidades.cidade_id')
+                    ->orderBy('cidades.cidade')
                     ->get();
        
 
