@@ -13,6 +13,7 @@ class CreateLocalidadesTable extends Migration
      */
     public function up()
     {
+        /*
         Schema::create('localidades', function (Blueprint $table) {
             
             $table->string("uf");
@@ -27,6 +28,7 @@ class CreateLocalidadesTable extends Migration
             $table->foreign('bairro_id')->references('id')->on('bairros');
 
         });
+        */
     }
 
     /**
@@ -36,6 +38,8 @@ class CreateLocalidadesTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::dropIfExists('localidades');
+        */
     }
 }

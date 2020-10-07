@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApoiadoresController;
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
@@ -36,9 +37,19 @@ Route::get('/beneficiario/consultar', [BeneficiarioController::class, 'consultar
 Route::get('/beneficiario/listar', [BeneficiarioController::class, 'listar']);
 
 
-Route::get('/apoiador/cadastrar/{id}', function () {
-    return view('/Apoiadores/cadastrar');
-});
+Route::get('/apoiador/cadastrar/{id}', [ApoiadoresController::class, 'cadastro']);
+
+Route::post('/apoiador/cadastrar/{id}', [ApoiadoresController::class, 'gravar']);
+
+Route::get('/apoiador/alterar/{id}', [ApoiadoresController::class, 'alterar']);
+
+Route::post('/apoiador/alterar/{id}', [ApoiadoresController::class, 'atualizar']);
+
+Route::post('/apoiador/excluir/{id}', [ApoiadoresController::class, 'excluir']);
+
+Route::get('/apoiador/consultar', [ApoiadoresController::class, 'consultar']);
+
+Route::get('/apoiador/listar', [ApoiadoresController::class, 'listar']);
 
 
 Route::get('/login', [LoginController::class, 'login']);

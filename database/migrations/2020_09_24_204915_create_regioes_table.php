@@ -13,10 +13,11 @@ class CreateRegioesTable extends Migration
      */
     public function up()
     {
+        /*
         Schema::create('regioes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('regiao');
-        });
+        });*/
     }
 
     /**
@@ -26,6 +27,8 @@ class CreateRegioesTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::dropIfExists('regioes');
+        */
     }
 }

@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BeneficiarioRequest;
 use App\Models\Beneficiario;
-use App\Models\Cidade;
-use App\Models\Bairro;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;

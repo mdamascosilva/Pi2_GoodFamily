@@ -26,42 +26,42 @@
                 </div>
         @endif
 
-
         <div class="container">
-        <h2>Ótimo</h2>
-            <h2>Agora, precisamos de algumas informações para fazer o cadastro de apoiador</h2>
+            <h2>Alterar dados cadastrados</h2>
             <div class="form">
-                <form action="/apoiador/cadastrar/{{ $user->id }}" method="POST">
+                @if ($apoiador)
+                <form action="/apoiador/alterar/{{ $apoiador->id }}" method="POST">
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                     <div>
                         <label for="nome">Nome</label>
-                        <input type="text" id="nome" value="{{ $user->name }}" name="nome">
+                        <input type="text" id="nome" name="nome" value="{{ $apoiador->nome }}">
                     </div>
                     
                     <div>
                         <label for="cpf">CPF</label>
-                        <input type="text" id="cpf" name="cpf">
+                        <input type="text" id="cpf" name="cpf" value="{{ $apoiador->cpf }}">
                     </div>
                     
                     <div>
                         <label for="telefone">Telefone</label>
-                        <input type="text" id="telefone" name="telefone">
+                        <input type="text" id="telefone" name="telefone" value="{{ $apoiador->telefone }}">
                     </div>
 
                     <div>
                         <label for="cep">CEP</label>
-                        <input type="text" id="cep" name="cep">
+                        <input type="text" id="cep" name="cep" value="{{ $apoiador->cep }}">
                     </div>
 
                     <div>
                         <label for="estado">Estado</label>
 
+                        <input type="hidden" value='{{ $apoiador->estado }}' id='hiddenUf' />
                         <select onchange="getCidades()" id="estado" name="estado">
                             <option selected disabled>Selecione uma opção</option>
                             
-                            <!--<option key="1" value="AC" >Acre</option>
+                            <!-- <option key="1" value="AC" >Acre</option>
                             <option key="2" value="AL" >Alagoas</option>
                             <option key="3" value="AP" >Amapá</option>
                             <option key="4" value="AM" >Amazonas</option>
@@ -74,51 +74,81 @@
                             <option key="11" value="MS" >Mato Grosso do Sul</option>
                             <option key="12" value="MG" >Minas Gerais</option>
                             <option key="13" value="PA" >Pará</option>
-                            <option key="14" value="PB" >Paraíba</option>-->
+                            <option key="14" value="PB" >Paraíba</option> -->
                             <option key="15" value="PR" >Paraná</option>
-                            <!--<option key="16" value="PE" >Pernambuco</option>
+                            <!-- <option key="16" value="PE" >Pernambuco</option>
                             <option key="17" value="PI" >Piauí</option>
                             <option key="18" value="RJ" >Rio de Janeiro</option>
-                            <option key="19" value="RN" >Rio Grande do Norte</option>-->
+                            <option key="19" value="RN" >Rio Grande do Norte</option> -->
                             <option key="20" value="RS" >Rio Grande do Sul</option>
-                            <!--<option key="21" value="RO" >Rondônia</option>
-                            <option key="22" value="RR" >Roraima</option>-->
+                            <!-- <option key="21" value="RO" >Rondônia</option>
+                            <option key="22" value="RR" >Roraima</option> -->
                             <option key="23" value="SC" >Santa Catarina</option>
-                            <!--<option key="24" value="SP" >São Paulo</option>
+                            <!-- <option key="24" value="SP" >São Paulo</option>
                             <option key="25" value="SE" >Sergipe</option>
                             <option key="26" value="TO" >Tocantins</option>
-                            <option key="26" value="DF" >Distrito Federal</option>-->
+                            <option key="26" value="DF" >Distrito Federal</option> -->
                         </select>
                     </div>
-
+                    
                     <div>
                         <label for="cidade">Cidade</label>
+                        <input type="hidden" value='{{ $apoiador->cidade }}' id='hiddenCidade' />
+
                         <select onchange="getBairros()" id="cidade" name="cidade">
-                            <option selected disabled>-</option>
+                            @foreach($cidades as $cidade)
+                                <option key="{{ $cidade->id }}" value="{{ $cidade->id }}" >{{ $cidade->cidade }}</option>
+                            @endforeach
                         </select>
                     </div>
 
                     <div>
                         <label for="bairro">Bairro</label>
+                        <input type="hidden" value='{{ $apoiador->bairro }}' id='hiddenBairro' />
+
                         <select id="bairro" name="bairro">
-                            <option selected disabled>-</option>
+                            @foreach($bairros as $bairro)
+                                <option key="{{ $bairro->id }}" value="{{ $bairro->id }}" >{{ $bairro->bairro }}</option>
+                            @endforeach
                         </select>
                     </div>
-                    
+
                     <div>
                         <label for="endereco">Endereço</label>
-                        <input type="text" id="endereco" name="endereco">
-                    </div>
+                        <input type="text" id="endereco" name="endereco" value="{{ $apoiador->endereco }}">
+                    </div>          
                     
                     <div>
-                        <button type="submit" class="btn btn-default">Enviar</button>
+                        <button type="submit" class="btn btn-default">Alterar</button>
                     </div>
                 </form>
+
+                    <div>
+                        <form action="/apoiador/excluir/{{ $apoiador->id }}" method="POST">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                            <button type="submit" class="btn btn-default">Excluir</button>
+                        </form>
+                    </div>
+                @endif
             </div>
         </div>
 
-        <script src='/js/request.js'></script>
-        <script src='/js/getCidade.js'></script>
-        <script src='/js/getBairro.js'></script>
+    <script src='/js/request.js'></script>
+    <script src='/js/getCidade.js'></script>
+    <script src='/js/getBairro.js'></script>
+
+    <script>
+
+        var estado = document.getElementById('hiddenUf').value;
+        document.getElementById('estado').value = estado;
+
+        var cidade = document.getElementById('hiddenCidade').value;
+        document.getElementById('cidade').value = cidade;
+
+        var bairro = document.getElementById('hiddenBairro').value;
+        document.getElementById('bairro').value = bairro;
+
+    </script>
+    
     </body>
 </html>

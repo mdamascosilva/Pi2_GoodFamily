@@ -13,10 +13,12 @@ class CreateBairrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('bairros', function (Blueprint $table) {
+        /*Schema::create('bairros', function (Blueprint $table) {
+            
             $table->increments('id');
             $table->string('bairro');
-        });
+            
+        });*/
     }
 
     /**
@@ -26,6 +28,8 @@ class CreateBairrosTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::dropIfExists('bairros');
+        */
     }
 }

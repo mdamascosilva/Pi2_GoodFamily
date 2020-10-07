@@ -13,10 +13,10 @@ class CreateCidadesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cidades', function (Blueprint $table) {
+        /*Schema::create('cidades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('cidade');
-        });
+        });*/
     }
 
     /**
@@ -26,6 +26,8 @@ class CreateCidadesTable extends Migration
      */
     public function down()
     {
+        /*
         Schema::dropIfExists('cidades');
+        */
     }
 }

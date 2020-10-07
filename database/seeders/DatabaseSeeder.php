@@ -14,12 +14,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // User::factory(10)->create();
-
+        /*
         $this->call([
             BairroSeeder::class,
             CidadeSeeder::class,
             RegiaoSeeder::class,
             LocalidadeSeeder::class,
         ]);
+        */
     }
 }

@@ -31,25 +31,17 @@ class UserController extends Controller{
             'password' => Hash::make($request->get('password')),
         ]);
 
-        if ($opcao == "beneficiario"){
-            return redirect('/beneficiario/cadastrar/' .$user->id );
-           
-        } else if ($opcao == "apoiador"){
-            return redirect('/apoiador/cadastrar/'.$user->id );
-        }
+        return redirect('/'. $user->user_type .'/cadastrar/'. $user->id );
     }
 
     public function alterarSenha(){
-
         return view('/Auth/senha', ['user' => Auth::user()]);
     }
 
     public function gravarNovaSenha(SenhaRequest $request){
 
         $user = User::findOrFail(Auth::id());
-
         $credentials = $request->only('email', 'password');
-
 
         if ((Auth::attempt($credentials)) && 
         $request->get('new_password') == $request->get('confirm_password')){
