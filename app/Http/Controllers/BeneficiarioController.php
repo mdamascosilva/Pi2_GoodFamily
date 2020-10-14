@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BeneficiarioRequest;
 use App\Models\Beneficiario;
+use App\Models\CategoriaNecessidade;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
@@ -12,7 +13,8 @@ class BeneficiarioController extends Controller
 {
     public function cadastro($id){
         $user = User::findOrFail($id);
-        return view('/Beneficiarios/cadastrar', ['user' => $user] );
+        $categoria = new CategoriaNecessidade;
+        return view('/Beneficiarios/cadastrar', ['user' => $user,'categoria' => $categoria::all()]);
     }
 
     public function gravar($id, BeneficiarioRequest $request, Beneficiario $beneficiario){

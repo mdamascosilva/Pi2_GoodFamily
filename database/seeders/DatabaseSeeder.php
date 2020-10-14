@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\CategoriaNecessidade;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,13 +15,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // User::factory(10)->create();
-        /*
+        
         $this->call([
-            BairroSeeder::class,
+            /*BairroSeeder::class,
             CidadeSeeder::class,
             RegiaoSeeder::class,
-            LocalidadeSeeder::class,
+            LocalidadeSeeder::class,*/
+            CategoriaSeed::class,
         ]);
-        */
+        
     }
 }

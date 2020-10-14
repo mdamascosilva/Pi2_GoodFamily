@@ -619,6 +619,26 @@ class Builder
     }
 
     /**
+     * Add a subquery cross join to the query.
+     *
+     * @param  \Closure|\Illuminate\Database\Query\Builder|string  $query
+     * @param  string  $as
+     * @return $this
+     */
+    public function crossJoinSub($query, $as)
+    {
+        [$query, $bindings] = $this->createSub($query);
+
+        $expression = '('.$query.') as '.$this->grammar->wrapTable($as);
+
+        $this->addBinding($bindings, 'join');
+
+        $this->joins[] = $this->newJoinClause($this, 'cross', new Expression($expression));
+
+        return $this;
+    }
+
+    /**
      * Get a new join clause.
      *
      * @param  \Illuminate\Database\Query\Builder  $parentQuery
@@ -2770,7 +2790,7 @@ class Builder
     }
 
     /**
-     * Insert a new record into the database.
+     * Insert new records into the database.
      *
      * @param  array  $values
      * @return bool
@@ -2809,7 +2829,7 @@ class Builder
     }
 
     /**
-     * Insert a new record into the database while ignoring errors.
+     * Insert new records into the database while ignoring errors.
      *
      * @param  array  $values
      * @return int
@@ -2869,7 +2889,7 @@ class Builder
     }
 
     /**
-     * Update a record in the database.
+     * Update records in the database.
      *
      * @param  array  $values
      * @return int
@@ -2950,7 +2970,7 @@ class Builder
     }
 
     /**
-     * Delete a record from the database.
+     * Delete records from the database.
      *
      * @param  mixed  $id
      * @return int
