@@ -34,6 +34,13 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+                    <img src='{{ $beneficiario->perfil }}' alt='Foto'>
+                                
+                    <div class="custom-file">
+                        <label for="perfil">Escolha uma foto de perfil</label>
+                        <input type="file" name="perfil" id="perfil">
+                    </div>
+
                     <div>
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" name="nome" value="{{ $beneficiario->nome }}">
