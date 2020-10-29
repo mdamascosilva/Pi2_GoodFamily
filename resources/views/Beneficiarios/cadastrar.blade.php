@@ -35,21 +35,18 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+                    <img src='{{ $beneficiario->perfil }}' alt='Foto'>
+                                
+                    <div class="custom-file">
+                        <label for="perfil">Escolha uma foto de perfil</label>
+                        <input type="file" name="perfil" id="perfil">
+                    </div>
+
                     <div>
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" value="{{ $user->name }}" name="nome">
                     </div>
 
-                    <div>
-                        <select id="categoria" name="categoria">
-                            <option selected disabled>Selecione uma opção</option>
-                            
-                            @foreach($categoria as $cat)
-                                <option key="{{ $cat->id }}" value="{{ $cat->id }}" >{{ $cat->categoria}}</option>
-                            @endforeach
-                    
-                        </select>
-                    </div>
                     
                     <div>
                         <label for="cpf">CPF</label>

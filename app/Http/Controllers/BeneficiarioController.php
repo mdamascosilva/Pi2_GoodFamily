@@ -13,8 +13,7 @@ class BeneficiarioController extends Controller
 {
     public function cadastro($id){
         $user = User::findOrFail($id);
-        $categoria = new CategoriaNecessidade;
-        return view('/Beneficiarios/cadastrar', ['user' => $user,'categoria' => $categoria::all()]);
+        return view('/Beneficiarios/cadastrar', ['user' => $user]);
     }
 
     public function gravar($id, BeneficiarioRequest $request, Beneficiario $beneficiario){
