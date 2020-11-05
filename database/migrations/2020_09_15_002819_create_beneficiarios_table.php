@@ -22,6 +22,7 @@ class CreateBeneficiariosTable extends Migration
             $table->string('estado');
             
             $table->string('endereco');
+            $table ->string('perfil')->nullable();
 
             $table->timestamps();
         });

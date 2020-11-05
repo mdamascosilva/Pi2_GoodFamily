@@ -35,6 +35,15 @@
 
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
+                    <br>
+
+                    <div class="custom-file">
+                        <label for="perfil">Escolha uma foto de perfil</label>
+                        <input type='file' name="perfil" id="perfil">
+                    </div>
+
+                    <br>
+
                     <div>
                         <label for="nome">Nome</label>
                         <input type="text" id="nome" value="{{ $user->name }}" name="nome">

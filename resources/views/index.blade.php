@@ -65,15 +65,12 @@
                 <p><a href="/registrar/apoiador">Quero ajudar</a></p>
                 <p><a href="/registrar/beneficiario">Preciso de auxílio</a></p>
             @endif
+        
         </div>
-
-        <div class="menu">
-
-            -----
-
-
-            <p><a href="/beneficiario/cadastrar">Cadastrar beneficiario</a></p>
-            <p><a href="/beneficiario/listar">Listar beneficiarios</a></p>
+            <p><a href="/necessidade/cadastrar">Cadastrar Necessidade</a></p>
+            
+        <div>
+            
         </div>
 
         @if ($mensagem ?? '')

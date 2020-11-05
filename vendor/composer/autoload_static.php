@@ -517,7 +517,6 @@ class ComposerStaticInit4f0b04a81c6d44922329e0e6bc60d417
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\ApoiadorController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApoiadorController.php',
         'App\\Http\\Controllers\\ApoiadoresController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApoiadoresController.php',
         'App\\Http\\Controllers\\BeneficiarioController' => __DIR__ . '/../..' . '/app/Http/Controllers/BeneficiarioController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
@@ -547,6 +546,7 @@ class ComposerStaticInit4f0b04a81c6d44922329e0e6bc60d417
         'App\\Models\\CategoriaNecessidade' => __DIR__ . '/../..' . '/app/Models/CategoriaNecessidade.php',
         'App\\Models\\Cidade' => __DIR__ . '/../..' . '/app/Models/Cidade.php',
         'App\\Models\\Localidade' => __DIR__ . '/../..' . '/app/Models/Localidade.php',
+        'App\\Models\\Necessidade' => __DIR__ . '/../..' . '/app/Models/Necessidade.php',
         'App\\Models\\Regioes' => __DIR__ . '/../..' . '/app/Models/Regioes.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',

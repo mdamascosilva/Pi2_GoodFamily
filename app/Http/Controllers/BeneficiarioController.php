@@ -13,12 +13,23 @@ class BeneficiarioController extends Controller
 {
     public function cadastro($id){
         $user = User::findOrFail($id);
-        $categoria = new CategoriaNecessidade;
-        return view('/Beneficiarios/cadastrar', ['user' => $user,'categoria' => $categoria::all()]);
+        return view('/Beneficiarios/cadastrar', ['user' => $user]);
     }
 
     public function gravar($id, BeneficiarioRequest $request, Beneficiario $beneficiario){
         $user = User::findOrFail($id);
+        $img_perfil = null;
+
+        if ($request->has('perfil')) {
+            $request->validate([
+                'perfil' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $imageName = time().'.'.$request->file('perfil')->extension();
+            $request->file('perfil')->move(public_path('storage'), $imageName);
+            $img_perfil = "/storage/".$imageName;
+        }
+
         $beneficiario->id = $user->id;
         $beneficiario->nome = $request->get('nome');
         $beneficiario->cpf = $request->get('cpf');
@@ -28,6 +39,7 @@ class BeneficiarioController extends Controller
         $beneficiario->cidade = $request->get('cidade');
         $beneficiario->estado = $request->get('estado');
         $beneficiario->cep = $request->get('cep');
+        $beneficiario->perfil = $img_perfil;
         $beneficiario->save();
 
         return view('index', ['mensagem' => 'Beneficiário criado com sucesso! ' . $beneficiario->id . 'Usuario ' . $user->id]);

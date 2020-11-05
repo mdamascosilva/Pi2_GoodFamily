@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
-    'App\\Http\\Controllers\\ApoiadorController' => $baseDir . '/app/Http/Controllers/ApoiadorController.php',
     'App\\Http\\Controllers\\ApoiadoresController' => $baseDir . '/app/Http/Controllers/ApoiadoresController.php',
     'App\\Http\\Controllers\\BeneficiarioController' => $baseDir . '/app/Http/Controllers/BeneficiarioController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
@@ -38,6 +37,7 @@ return array(
     'App\\Models\\CategoriaNecessidade' => $baseDir . '/app/Models/CategoriaNecessidade.php',
     'App\\Models\\Cidade' => $baseDir . '/app/Models/Cidade.php',
     'App\\Models\\Localidade' => $baseDir . '/app/Models/Localidade.php',
+    'App\\Models\\Necessidade' => $baseDir . '/app/Models/Necessidade.php',
     'App\\Models\\Regioes' => $baseDir . '/app/Models/Regioes.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',

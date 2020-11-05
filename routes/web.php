@@ -4,6 +4,7 @@ use App\Http\Controllers\ApoiadoresController;
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\NecessidadeController;
 use App\Http\Controllers\RegioesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,21 @@ Route::get('/apoiador/consultar', [ApoiadoresController::class, 'consultar']);
 Route::get('/apoiador/listar', [ApoiadoresController::class, 'listar']);
 
 
+Route::get('/necessidade/cadastrar', [NecessidadeController::class, 'cadastro']);
+
+Route::post('/necessidade/cadastrar', [NecessidadeController::class, 'gravar']);
+
+Route::get('/necessidade/alterar/{id}', [NecessidadeController::class, 'alterar']);
+
+Route::post('/necessidade/alterar/{id}', [NecessidadeController::class, 'atualizar']);
+
+Route::post('/necessidade/excluir/{id}', [NecessidadeController::class, 'excluir']);
+
+Route::get('/necessidade/consultar', [NecessidadeController::class, 'consultar']);
+
+Route::get('/necessidade/listar', [NecessidadeController::class, 'listar']);
+
+
 Route::get('/login', [LoginController::class, 'login']);
 
 Route::post('/login', [LoginController::class, 'autenticar']);
@@ -73,3 +89,4 @@ Route::get('/regiao/{uf}', [RegioesController::class, 'getRegiao']);
 Route::get('/cidade/{regiao}', [RegioesController::class, 'getCidade']);
 
 Route::get('/bairro/{cidade}', [RegioesController::class, 'getBairro']);
+

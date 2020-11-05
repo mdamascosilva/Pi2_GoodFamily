@@ -4,17 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApoiadorsTable extends Migration
+class CreateNecessidadesTable extends Migration
 {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('apoiadors', function (Blueprint $table) {
+        public function up()
+        {
+            Schema::create('necessidades', function (Blueprint $table) {
             $table->id();
+            $table->integer('categoria_id');
+            $table->integer('beneficiario_id');
+            $table->string('descricao');
+            $table->string('status_necessidade');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateApoiadorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apoiadors');
+        Schema::dropIfExists('necessidades');
     }
 }
