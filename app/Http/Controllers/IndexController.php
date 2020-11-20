@@ -7,8 +7,9 @@ use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
         $user = Auth::user();
-        return view('/index', ['user' => $user] );
+        $mensagem = $request->session()->get('mensagem');
+        return view('index', compact('user', 'mensagem'));
     }
 }

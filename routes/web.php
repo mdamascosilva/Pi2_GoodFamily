@@ -20,18 +20,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [IndexController::class, 'index']);
+Route::get('/', [IndexController::class, 'index'])
+    ->name('index');
 
 
-Route::get('/beneficiario/cadastrar/{id}', [BeneficiarioController::class, 'cadastro']);
+Route::get('/beneficiario/cadastrar', [BeneficiarioController::class, 'cadastro']);
 
-Route::post('/beneficiario/cadastrar/{id}', [BeneficiarioController::class, 'gravar']);
+Route::post('/beneficiario/cadastrar', [BeneficiarioController::class, 'gravar']);
 
-Route::get('/beneficiario/alterar/{id}', [BeneficiarioController::class, 'alterar']);
+Route::get('/beneficiario/alterar', [BeneficiarioController::class, 'alterar']);
 
-Route::post('/beneficiario/alterar/{id}', [BeneficiarioController::class, 'atualizar']);
+Route::post('/beneficiario/alterar', [BeneficiarioController::class, 'atualizar']);
 
-Route::post('/beneficiario/excluir/{id}', [BeneficiarioController::class, 'excluir']);
+Route::get('/beneficiario/historia', [BeneficiarioController::class, 'alterarHistoria']);
+
+Route::post('/beneficiario/historia', [BeneficiarioController::class, 'gravarHistoria']);
+
+Route::delete('/beneficiario/excluir', [BeneficiarioController::class, 'excluir']);
+
 
 Route::get('/beneficiario/consultar', [BeneficiarioController::class, 'consultar']);
 

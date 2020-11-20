@@ -25,8 +25,16 @@ class BeneficiarioRequest extends FormRequest
     {
         return [
             'nome' => 'required',
-            'cpf' => 'required',
+            'documento' => 'required',
             'telefone' => 'required',
+            'pais_origem' => 'required',
+            'cep' => 'required',
+            'uf' => 'required',
+            'ddd' => 'required',
+            'cidade' => 'required',
+            'bairro' => 'required',
+            'rua' => 'required',
+            'complemento_endereco' => 'required'
         ];
     }
 }

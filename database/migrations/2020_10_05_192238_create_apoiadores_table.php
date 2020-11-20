@@ -19,9 +19,12 @@ class CreateApoiadoresTable extends Migration
             $table->string('cpf');
             $table->string('telefone');
             $table->string('cep');
-            $table->string('estado');
-            
-            $table->string('endereco');
+            $table->string('uf');
+            $table->string('ddd');
+            $table->string('cidade');
+            $table->string('bairro');
+            $table->string('logradouro');
+            $table->string('complemento_endereco');
 
             $table->timestamps();
         });

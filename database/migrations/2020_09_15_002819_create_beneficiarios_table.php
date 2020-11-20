@@ -16,13 +16,23 @@ class CreateBeneficiariosTable extends Migration
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
-            $table->string('cpf');
+            $table->string('documento');
+            $table->string('pais_origem');
             $table->string('telefone');
             $table->string('cep');
-            $table->string('estado');
-            
-            $table->string('endereco');
-            $table ->string('perfil')->nullable();
+            $table->string('uf');
+            $table->string('ddd');
+            $table->string('cidade');
+            $table->string('bairro');
+            $table->string('rua');
+            $table->string('complemento_endereco');
+            $table->longText('historia')->nullable();
+
+            //$table ->string('perfil')->nullable();
+
+            $table->foreign('id')
+                ->references('id')
+                ->on('users');
 
             $table->timestamps();
         });

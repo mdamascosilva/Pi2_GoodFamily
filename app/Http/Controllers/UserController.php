@@ -30,8 +30,11 @@ class UserController extends Controller{
             'user_type' => $opcao,
             'password' => Hash::make($request->get('password')),
         ]);
+        
+        $credentials = $request->only('email', 'password');
+        Auth::attempt($credentials);
 
-        return redirect('/'. $user->user_type .'/cadastrar/'. $user->id );
+        return redirect('/'. $user->user_type .'/cadastrar');
     }
 
     public function alterarSenha(){

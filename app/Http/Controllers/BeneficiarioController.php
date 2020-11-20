@@ -4,55 +4,32 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\BeneficiarioRequest;
 use App\Models\Beneficiario;
-use App\Models\CategoriaNecessidade;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
+use App\Services\BeneficiarioService;
 
 class BeneficiarioController extends Controller
 {
-    public function cadastro($id){
-        $user = User::findOrFail($id);
-        return view('/Beneficiarios/cadastrar', ['user' => $user]);
+    public function cadastro(){
+        $user = User::findOrFail(Auth::id());
+        return view('Beneficiarios.cadastrar', compact('user'));
     }
 
-    public function gravar($id, BeneficiarioRequest $request, Beneficiario $beneficiario){
-        $user = User::findOrFail($id);
-        $img_perfil = null;
-
-        if ($request->has('perfil')) {
-            $request->validate([
-                'perfil' => 'required|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ]);
-
-            $imageName = time().'.'.$request->file('perfil')->extension();
-            $request->file('perfil')->move(public_path('storage'), $imageName);
-            $img_perfil = "/storage/".$imageName;
-        }
-
-        $beneficiario->id = $user->id;
-        $beneficiario->nome = $request->get('nome');
-        $beneficiario->cpf = $request->get('cpf');
-        $beneficiario->telefone = $request->get('telefone');
-        $beneficiario->endereco = $request->get('endereco');
-        $beneficiario->bairro = $request->get('bairro');
-        $beneficiario->cidade = $request->get('cidade');
-        $beneficiario->estado = $request->get('estado');
-        $beneficiario->cep = $request->get('cep');
-        $beneficiario->perfil = $img_perfil;
-        $beneficiario->save();
-
-        return view('index', ['mensagem' => 'Beneficiário criado com sucesso! ' . $beneficiario->id . 'Usuario ' . $user->id]);
+    public function gravar(BeneficiarioRequest $request, BeneficiarioService $beneficiarioService){
+        $user = User::findOrFail(Auth::id());
+        $beneficiario = $beneficiarioService->salvar( $user->id, $request );
+        $request->session()->flash(
+            'mensagem',
+            'Cadastro do beneficiário ' . $beneficiario->nome . ' foi criado com sucesso!'
+        );
+        return redirect('/beneficiario/historia');
     }
 
-    public function alterar(RegioesController $regioesController){
+    public function alterar(){
         $id = Auth::id();
         $beneficiario = Beneficiario::findOrFail($id);
-        $uf = $beneficiario->estado;
-        $cidade = $beneficiario->cidade;
-        return view('/Beneficiarios/alterar', [ 'beneficiario' => $beneficiario, 
-                                                'cidades' => $regioesController->cidades($uf), 
-                                                'bairros' => $regioesController->bairros($cidade) ]);
+        return view('/Beneficiarios/alterar', [ 'beneficiario' => $beneficiario ]);
     }
 
     public function atualizar( BeneficiarioRequest $request, Beneficiario $beneficiario){
@@ -72,6 +49,16 @@ class BeneficiarioController extends Controller
 
         return view("index", ['mensagem' => 'Beneficiário alterado com sucesso!']);
     }
+
+
+    public function alterarHistoria(){
+        return view("Beneficiarios.historia");
+    }
+
+    public function gravarHistoria(){
+
+    }
+
 
     public function excluir($id, Beneficiario $beneficiario){
         $beneficiario = Beneficiario::find($id);

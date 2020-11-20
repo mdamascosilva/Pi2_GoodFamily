@@ -54,6 +54,6 @@ class LoginController extends Controller{
     public function finalizarCadastro(){
         $user = Auth::user();
 
-        return redirect('/'. $user->user_type .'/cadastrar/'. $user->id );
+        return redirect('/'. $user->user_type .'/cadastrar' );
     }
 }
