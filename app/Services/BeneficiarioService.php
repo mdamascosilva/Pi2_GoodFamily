@@ -10,6 +10,20 @@ class BeneficiarioService
 
     public function salvar(int $id, BeneficiarioRequest $request): Beneficiario
     {
+        $beneficiario = $this->getBeneficiario($id, $request);
+        $beneficiario->saveOrFail();
+        return $beneficiario;
+    }
+
+    public function atualizar(int $id, BeneficiarioRequest $request): Beneficiario{
+
+        $beneficiario = $this->getBeneficiario($id, $request);
+        $beneficiario->update();
+        return $beneficiario;
+    }
+
+    function getBeneficiario(int $id, BeneficiarioRequest $request) : Beneficiario{
+
         $beneficiario = new Beneficiario();
 
         $beneficiario->id = $id;
@@ -24,9 +38,7 @@ class BeneficiarioService
         $beneficiario->bairro = $request->get('bairro');
         $beneficiario->rua = $request->get('rua');
         $beneficiario->complemento_endereco = $request->get('complemento_endereco');
-        $beneficiario->historia = $request->get('historia');
 
-        $beneficiario->saveOrFail();
         return $beneficiario;
     }
 }

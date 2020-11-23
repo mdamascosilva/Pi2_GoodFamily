@@ -1,67 +1,64 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>ContactMe</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    </head>
+@extends('layout')
 
-    <body>
-        <div class="header">
-            <h1>Good Family</h1>
-        </div>
+@section('navbar')
+@include('navbar', ['user' => Auth::user()])
+@endsection
 
-        <div class="menu">
-            <p><a href="/beneficiario/cadastrar">Cadastrar beneficiario</a></p>
-            <p><a href="/beneficiario/listar">Listar beneficiarios</a></p>
-        </div>
+@section('cabecalho')
+Apoiador
+@endsection
 
-        @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li> {{ $error }} </li>
-                        @endforeach
-                    </ul>
-                </div>
-        @endif
+@section('conteudo')
 
-        <div class="container">
-            <h2>Apoiador</h2>
-            <div class="form">
-                @if ($apoiador)
+@include('errors', ['errors' => $errors])
 
-                    <div>
-                        <p>CPF</p>
-                        <p>{{ $apoiador->cpf }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Telefone</p>
-                        <p>{{ $apoiador->telefone }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Endereço</p>
-                        <p>{{ $apoiador->endereco }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Cidade</p>
-                        <p>{{ $apoiador->cidade }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Estado</p>
-                        <p>{{ $apoiador->estado }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>CEP</p>
-                        <p>{{ $apoiador->cep }}</p>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </body>
-</html>
+<div class="form">
+    @if ($apoiador)
+
+    <div>
+        <p>Nome</p>
+        <p>{{ $apoiador->nome }}</p>
+    </div>
+
+    <div>
+        <p>CPF</p>
+        <p>{{ $apoiador->cpf }}</p>
+    </div>
+
+    <div>
+        <p>Telefone</p>
+        <p>{{ $apoiador->telefone }}</p>
+    </div>
+
+    <div>
+        <p>Endereço</p>
+        <p>{{ $apoiador->rua }}, {{ $apoiador->complemento_endereco }}</p>
+    </div>
+
+    <div>
+        <p>Cidade</p>
+        <p>{{ $apoiador->cidade }}</p>
+    </div>
+
+    <div>
+        <p>UF</p>
+        <p>{{ $apoiador->uf }}</p>
+    </div>
+
+    <div>
+        <p>CEP</p>
+        <p>{{ $apoiador->cep }}</p>
+    </div>
+
+    <div>
+        <form method="POST" action="/apoiador/excluir" onsubmit="return confirm('Tem certeza que deseja remover sua conta, {{ addslashes($apoiador->nome)}}?')">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+    </div>
+
+    @endif
+</div>
+
+@endsection

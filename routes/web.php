@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\ApoiadoresController;
+use App\Http\Controllers\ApoiadorController;
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NecessidadeController;
-use App\Http\Controllers\RegioesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,19 +43,19 @@ Route::get('/beneficiario/consultar', [BeneficiarioController::class, 'consultar
 Route::get('/beneficiario/listar', [BeneficiarioController::class, 'listar']);
 
 
-Route::get('/apoiador/cadastrar/{id}', [ApoiadoresController::class, 'cadastro']);
+Route::get('/apoiador/cadastrar', [ApoiadorController::class, 'cadastro']);
 
-Route::post('/apoiador/cadastrar/{id}', [ApoiadoresController::class, 'gravar']);
+Route::post('/apoiador/cadastrar', [ApoiadorController::class, 'gravar']);
 
-Route::get('/apoiador/alterar/{id}', [ApoiadoresController::class, 'alterar']);
+Route::get('/apoiador/alterar', [ApoiadorController::class, 'alterar']);
 
-Route::post('/apoiador/alterar/{id}', [ApoiadoresController::class, 'atualizar']);
+Route::post('/apoiador/alterar', [ApoiadorController::class, 'atualizar']);
 
-Route::post('/apoiador/excluir/{id}', [ApoiadoresController::class, 'excluir']);
+Route::delete('/apoiador/excluir', [ApoiadorController::class, 'excluir']);
 
-Route::get('/apoiador/consultar', [ApoiadoresController::class, 'consultar']);
+Route::get('/apoiador/consultar', [ApoiadorController::class, 'consultar']);
 
-Route::get('/apoiador/listar', [ApoiadoresController::class, 'listar']);
+Route::get('/apoiador/listar', [ApoiadorController::class, 'listar']);
 
 
 Route::get('/necessidade/cadastrar', [NecessidadeController::class, 'cadastro']);
@@ -88,11 +87,4 @@ Route::post('/senha', [UserController::class, 'gravarNovaSenha']);
 Route::get('/registrar/{opcao}', [UserController::class, 'registro']);
 
 Route::post('/registrar/{opcao}', [UserController::class, 'registrar']);
-
-
-Route::get('/regiao/{uf}', [RegioesController::class, 'getRegiao']);
-
-Route::get('/cidade/{regiao}', [RegioesController::class, 'getCidade']);
-
-Route::get('/bairro/{cidade}', [RegioesController::class, 'getBairro']);
 

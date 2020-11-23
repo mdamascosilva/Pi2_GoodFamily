@@ -49,6 +49,11 @@ Beneficiário
     <p>{{ $beneficiario->cep }}</p>
 </div>
 
+<div>
+    <p>História</p>
+    <p>{{ $beneficiario->historia }}</p>
+</div>
+
 <div>                
 
     <form method="POST" 

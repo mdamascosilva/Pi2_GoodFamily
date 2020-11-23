@@ -19,7 +19,7 @@ Sua história
         @csrf
 
         <div>
-            <textarea name="historia" id="historia" cols="30" rows="10" placeholder="Se você se sentir a vontade, conte-nos um pouco mais da sua história"></textarea>
+            <textarea name="historia" id="historia" cols="30" rows="10" placeholder="Se você se sentir a vontade, conte-nos um pouco mais da sua história">{{ $historia ?? '' }}</textarea>
         </div>
 
         <div>

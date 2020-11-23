@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ApoiadoresRequest extends FormRequest
+class ApoiadorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,6 +27,13 @@ class ApoiadoresRequest extends FormRequest
             'nome' => 'required',
             'cpf' => 'required',
             'telefone' => 'required',
+            'cep' => 'required',
+            'uf' => 'required',
+            'ddd' => 'required',
+            'cidade' => 'required',
+            'bairro' => 'required',
+            'rua' => 'required',
+            'complemento_endereco' => 'required'
         ];
     }
 }

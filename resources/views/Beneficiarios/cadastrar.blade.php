@@ -45,11 +45,6 @@ Agora, precisamos de algumas informações para fazer o cadastro de beneficiári
         @include('includes.form_endereco')
 
         <div>
-            <label for="historia">Sua história</label>
-            <textarea name="historia" id="historia" cols="30" rows="10" placeholder="Conte-nos um pouco mais de sua história"></textarea>
-        </div>
-
-        <div>
             <button type="submit" class="btn btn-default">Enviar</button>
         </div>
     </form>

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Models\Apoiadores;
+use App\Models\Apoiador;
 use App\Models\Beneficiario;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,7 +29,7 @@ class LoginController extends Controller{
         if (Auth::attempt($credentials, $remember)){
             $user = Auth::user();
 
-            if (Beneficiario::find($user->id) || Apoiadores::find($user->id)){
+            if (Beneficiario::find($user->id) || Apoiador::find($user->id)){
                 return redirect('/');
             } else {
                 return view('/Auth/cadastro_incompleto', ['user' => $user]);
@@ -53,7 +53,6 @@ class LoginController extends Controller{
 
     public function finalizarCadastro(){
         $user = Auth::user();
-
         return redirect('/'. $user->user_type .'/cadastrar' );
     }
 }

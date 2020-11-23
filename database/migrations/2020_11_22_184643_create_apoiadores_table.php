@@ -13,7 +13,7 @@ class CreateApoiadoresTable extends Migration
      */
     public function up()
     {
-        Schema::create('apoiadores', function (Blueprint $table) {
+        Schema::create('apoiadors', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
             $table->string('cpf');
@@ -23,9 +23,8 @@ class CreateApoiadoresTable extends Migration
             $table->string('ddd');
             $table->string('cidade');
             $table->string('bairro');
-            $table->string('logradouro');
+            $table->string('rua');
             $table->string('complemento_endereco');
-
             $table->timestamps();
         });
     }
@@ -37,6 +36,6 @@ class CreateApoiadoresTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('apoiadores');
+        Schema::dropIfExists('apoiadors');
     }
 }

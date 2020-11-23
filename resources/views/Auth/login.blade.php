@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('navbar')
-@include('navbar')
+@include('navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
