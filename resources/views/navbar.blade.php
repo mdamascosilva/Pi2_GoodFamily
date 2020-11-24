@@ -20,7 +20,7 @@
 
                 @auth
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Seja bem vindo, {{$user->name}}
+                    Bem vindo, {{$user->name}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/{{$user->user_type}}/consultar">Consultar</a>
