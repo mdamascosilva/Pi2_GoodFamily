@@ -29,12 +29,11 @@ class BeneficiarioController extends Controller
 
     public function alterar(){
         $beneficiario = Beneficiario::findOrFail(Auth::id());
-        return view('/Beneficiarios/alterar', compact('beneficiario'));
+        return view('Beneficiarios.alterar', compact('beneficiario'));
     }
 
     public function atualizar( BeneficiarioRequest $request , BeneficiarioService $beneficiarioService){
         
-        echo $request;
         $beneficiarioService->atualizar( Auth::id() , $request );
         $request->session()->flash(
             'mensagem',
@@ -44,9 +43,11 @@ class BeneficiarioController extends Controller
     }
 
 
-    public function alterarHistoria(){
+    public function alterarHistoria(Request $request){
         $beneficiario = Beneficiario::find(Auth::id());
-        return view("Beneficiarios.historia", ['historia' => $beneficiario->historia]);
+        $historia = $beneficiario->historia;
+        $mensagem = $request->session()->get('mensagem');
+        return view("Beneficiarios.historia", compact(['historia', 'mensagem']));
     }
 
     public function gravarHistoria(Request $request){
@@ -61,7 +62,7 @@ class BeneficiarioController extends Controller
     }
 
 
-    public function excluir(Request $request, Beneficiario $beneficiario){
+    public function excluir(Request $request){
         $id = Auth::id();
 
         $beneficiario = Beneficiario::find($id);
@@ -79,12 +80,12 @@ class BeneficiarioController extends Controller
     }
 
     public function listar(){
-        return view('/Beneficiarios/listar', array('beneficiarios' => Beneficiario::all()));
+        return view('Beneficiarios.listar', array('beneficiarios' => Beneficiario::all()));
     }
 
     public function consultar(){
         $id = Auth::id();
 
-        return view('/Beneficiarios/consultar', ['beneficiario' => Beneficiario::findOrFail($id)]);
+        return view('Beneficiarios.consultar', ['beneficiario' => Beneficiario::findOrFail($id)]);
     }
 }

@@ -25,7 +25,7 @@ class NecessidadeRequest extends FormRequest
     {
         return [
             'categoria_id' => 'required',
-            'id' => 'required',
+            'descricao' => 'required',
         ];
     }
 }

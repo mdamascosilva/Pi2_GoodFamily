@@ -6,60 +6,78 @@ use App\Http\Requests\NecessidadeRequest;
 use App\Models\CategoriaNecessidade;
 use App\Models\Necessidade;
 use App\Models\User;
+use App\Services\NecessidadeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class NecessidadeController extends Controller
 {
     #get(envio do formulario)
     public function cadastro(){
-        
-        $categoria = new CategoriaNecessidade();
-        return view('/Necessidades/cadastrar', ['categoria' => $categoria::all()]);
+        $categorias = CategoriaNecessidade::all();
+        return view('Necessidades.cadastrar', compact('categorias'));
     }
 
     #post(formulario preenchido)
-    public function gravar(Request $request, Necessidade $necessidade){
+    public function gravar(NecessidadeRequest $request, NecessidadeService $necessidadeService){
 
-        $id = Auth::id();
-        $necessidade->beneficiario_id = $id;
-        $necessidade->categoria_id = $request->get('categoria_id');
-        $necessidade->descricao = $request->get('descricao');
-        $necessidade->status_necessidade = "Aberto";
-        $necessidade->save();
+        $necessidadeService->salvar($request);
 
-        return view('index', ['mensagem' => 'Necessidade criada com sucesso! ']);
-    
+        $request->session()->flash(
+            'mensagem',
+            'Necessidade criada com sucesso!'
+        );
+        return redirect()->route('index');
+
     }
 
     #get(envio do alteração formulario)
-    public function alterar(){
-
+    public function alterar($id){
+        $necessidade = Necessidade::findOrFail($id);
+        $categorias = CategoriaNecessidade::all();
+        return view('Necessidades.alterar', compact(['necessidade', 'categorias']));
     }
 
     #post(gravar alteração formulario)
-    public function atualizar( Request $request, Necessidade $necessidade){
+    public function atualizar( $id, NecessidadeRequest $request, NecessidadeService $necessidadeService){
 
+        $necessidadeService->atualizar( $id , $request );
+        $request->session()->flash(
+            'mensagem',
+            'Dados atualizados com sucesso!'
+        );
+        return redirect()->route('index');
     }
 
-    public function excluir($id, Necessidade $necessidade){
+    public function excluir(int $id, Request $request){
+        
+        $necessidade = Necessidade::find($id);
+        $necessidade->delete();
 
+        $request->session()->flash(
+            'mensagem',
+            'Necessidade excluída com sucesso'
+        );
+        return redirect()->route('index');
     }
 
     #lista todos os casos
     public function listar(){
-
+        
+        $necessidades = DB::table('necessidades')
+            ->where('beneficiario_id', Auth::id())
+            ->join('categoria_necessidades', 'necessidades.categoria_id', '=', 'categoria_necessidades.id')
+            ->select('necessidades.id as id', 
+                    'necessidades.descricao as descricao' ,
+                    'categoria_necessidades.categoria as categoria',
+                    'categoria_necessidades.id as categoria_id')
+            ->get();
+        return view('Necessidades.listar', compact('necessidades'));
     }
 
     #consulta especifica
     public function consultar(){
 
     }
-
-
-    
-
-
-
-
 }

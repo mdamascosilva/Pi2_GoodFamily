@@ -1,63 +1,46 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>ContactMe</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    </head>
+@extends('layout')
 
-    <body>
-        <div class="header">
-            <h1>Good Family</h1>
+@section('navbar')
+@include('navbar', ['user' => Auth::user()])
+@endsection
+
+@section('cabecalho')
+Suas necessidades
+@endsection
+
+@section('conteudo')
+
+@include('errors', ['errors' => $errors])
+
+<div class="lista">
+    @foreach($necessidades as $necessidade)
+
+    <div class="bloco">
+        <div class="linha">
+            <a href="/necessidades/alterar/{{ $necessidade->id }}">
+                Editar
+            </a>
         </div>
 
-        <div class="menu">
-            <p><a href="/beneficiario/cadastrar">Cadastrar beneficiario</a></p>
-            <p><a href="/beneficiario/listar">Listar beneficiarios</a></p>
+        <div class="linha">
+            <p>Categoria</p>
+            <p>{{ $necessidade->categoria }}</p>
         </div>
 
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li> {{ $error }} </li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <div class="container">
-            <div class="lista">
-                @foreach($beneficiarios as $beneficiario)
-                
-                    <div class="bloco">
-                        <div class="linha">
-                            <p>Nome</p>
-                            <p><a href="/beneficiario/consultar/{{ $beneficiario->id }}">
-                                {{ $beneficiario->nome }}
-                                </a>
-                            </p>
-                        </div>
-
-                        <div class="linha">
-                            <p>Telefone</p>
-                            <p>{{ $beneficiario->telefone }}</p>
-                        </div>
-
-                        <div class="linha">
-                            <p>Cidade</p>
-                            <p>{{ $beneficiario->cidade }}</p>
-                        </div>
-
-                        <div class="linha">
-                            <p>Estado</p>
-                            <p>{{ $beneficiario->estado }}</p>
-                        </div>
-
-                    </div>
-                    <br/>
-                @endforeach
-            </div>
+        <div class="linha">
+            <p>Descrição</p>
+            <p>{{ $necessidade->descricao }}</p>
         </div>
-    </body>
-</html>
+
+        <form method="POST" action="/necessidades/excluir/{{ $necessidade->id }}" onsubmit="return confirm('Tem certeza que deseja excluir essa necessidade?')">
+            @csrf
+            @method('DELETE')
+
+            <button type="submit" class="btn btn-danger">Excluir</button>
+        </form>
+    </div>
+    <br />
+    @endforeach
+</div>
+
+@endsection

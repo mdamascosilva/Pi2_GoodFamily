@@ -28,6 +28,8 @@
                     
                     @if($user->user_type == 'beneficiario')
                     <a class="dropdown-item" href="/beneficiario/historia">Sua história</a>
+                    <a class="dropdown-item" href="/necessidades/cadastrar">O que você está precisando?</a>
+                    <a class="dropdown-item" href="/necessidades/listar">Consultar suas necessidades</a>
                     @endif
 
                     <a class="dropdown-item" href="/senha">Trocar senha</a>

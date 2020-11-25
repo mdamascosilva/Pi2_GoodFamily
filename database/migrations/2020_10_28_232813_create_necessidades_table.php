@@ -11,9 +11,9 @@ class CreateNecessidadesTable extends Migration
      *
      * @return void
      */
-        public function up()
-        {
-            Schema::create('necessidades', function (Blueprint $table) {
+    public function up()
+    {
+        Schema::create('necessidades', function (Blueprint $table) {
             $table->id();
             $table->integer('categoria_id');
             $table->integer('beneficiario_id');
