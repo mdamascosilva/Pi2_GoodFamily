@@ -22,6 +22,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index'])
     ->name('index');
 
+Route::get('/noticias', [IndexController::class, 'noticias']);
+
+Route::get('/contato', [IndexController::class, 'contato']);
+
+Route::get('/quem-somos', [IndexController::class, 'quemSomos']);
+
 
 
 Route::get('/registrar/{opcao}', [UserController::class, 'registro']);

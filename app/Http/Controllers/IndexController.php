@@ -12,4 +12,16 @@ class IndexController extends Controller
         $mensagem = $request->session()->get('mensagem');
         return view('index', compact('user', 'mensagem'));
     }
+
+    public function noticias(){
+        return view('noticias.noticia');
+    }
+
+    public function contato(){
+        return view('outros.contato');
+    }
+
+    public function quemSomos(){
+        return view('outros.quem_somos');
+    }
 }
