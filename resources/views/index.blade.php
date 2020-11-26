@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('includes.layout')
 
 @section('navbar')
-@include('navbar', ['user' => Auth::user()])
+@include('includes.navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
@@ -10,9 +10,9 @@ Good Family
 
 @section('conteudo')
 
-@include('mensagem', ['mensagem' => $mensagem])
+@include('includes.mensagem', ['mensagem' => $mensagem])
 
-@include('errors', ['errors' => $errors])
+@include('includes.errors', ['errors' => $errors])
 
 <!--
 <div class="topnav">

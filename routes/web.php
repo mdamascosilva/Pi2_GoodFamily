@@ -96,6 +96,10 @@ Route::post('/necessidades/alterar/{id}', [NecessidadeController::class, 'atuali
 
 Route::delete('/necessidades/excluir/{id}', [NecessidadeController::class, 'excluir']);
 
-//Route::get('/necessidade/consultar', [NecessidadeController::class, 'consultar']);
-
 Route::get('/necessidades/listar', [NecessidadeController::class, 'listar']);
+
+Route::get('/necessidades/consultar', [NecessidadeController::class, 'consultar']);
+
+Route::get('/necessidades/buscar-necessidades', [NecessidadeController::class, 'buscarNecessidades']);
+
+Route::get('/necessidades/consultar/{id}', [NecessidadeController::class, 'detalhes']);

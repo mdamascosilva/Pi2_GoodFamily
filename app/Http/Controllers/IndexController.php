@@ -9,6 +9,14 @@ class IndexController extends Controller
 {
     public function index(Request $request){
         $user = Auth::user();
+ 
+            $mensagem = $request->session()->get('mensagem');
+            return view('index', compact('user', 'mensagem'));
+        
+    }
+
+    public function apoiadorIndex(Request $request){
+        $user = Auth::user();
         $mensagem = $request->session()->get('mensagem');
         return view('index', compact('user', 'mensagem'));
     }

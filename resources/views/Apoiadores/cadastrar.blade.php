@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('includes.layout')
 
 @section('navbar')
-@include('navbar', ['user' => Auth::user()])
+@include('includes.navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
@@ -11,7 +11,7 @@ Agora, precisamos de algumas informações para fazer o cadastro de apoiador
 
 @section('conteudo')
 
-@include('errors', ['errors' => $errors])
+@include('includes.errors', ['errors' => $errors])
 
 <div class="form">
     <form action="/apoiador/cadastrar" method="POST">

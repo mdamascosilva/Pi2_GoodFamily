@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('includes.layout')
 
 @section('navbar')
 @include('navbar', ['user' => Auth::user()])
@@ -10,9 +10,9 @@ Good Family
 
 @section('conteudo')
 
-@include('errors', ['errors' => $errors])
+@include('includes.errors', ['errors' => $errors])
 
-@include('mensagem', ['mensagem' => $mensagem ?? ''])
+@include('includes.mensagem', ['mensagem' => $mensagem ?? ''])
 
 <h2>Alterar senha</h2>
 <div class="form">

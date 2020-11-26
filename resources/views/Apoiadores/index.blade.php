@@ -1,24 +1,26 @@
 @extends('includes.layout')
 
 @section('navbar')
-@include('includes.navbar', ['user' => Auth::user()])
+@include('navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
-Suas necessidades
+Algumas pessoas que precisam de você!
 @endsection
 
 @section('conteudo')
 
-@include('includes.errors', ['errors' => $errors])
+@include('mensagem', ['mensagem' => $mensagem])
+
+@include('errors', ['errors' => $errors])
 
 <div class="lista">
     @foreach($necessidades as $necessidade)
 
     <div class="bloco">
         <div class="linha">
-            <a href="/necessidades/alterar/{{ $necessidade->id }}">
-                Editar
+            <a href="/necessidades/consultar/{{ $necessidade->id }}">
+                Ver detalhes
             </a>
         </div>
 
@@ -32,13 +34,17 @@ Suas necessidades
             <p>{{ $necessidade->descricao }}</p>
         </div>
 
-        <form method="POST" action="/necessidades/excluir/{{ $necessidade->id }}" onsubmit="return confirm('Tem certeza que deseja excluir essa necessidade?')">
-            @csrf
-            @method('DELETE')
+        <div class="linha">
+            <p>Bairro</p>
+            <p>{{ $necessidade->bairro }}</p>
+        </div>
 
-            <button type="submit" class="btn btn-danger">Excluir</button>
-        </form>
+        <div class="linha">
+            <p>Cidade</p>
+            <p>{{ $necessidade->cidade }}</p>
+        </div>
     </div>
+
     <br />
     @endforeach
 </div>
