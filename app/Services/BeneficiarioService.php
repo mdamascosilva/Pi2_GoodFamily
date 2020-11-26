@@ -4,15 +4,30 @@ namespace App\Services;
 
 use App\Http\Requests\BeneficiarioRequest;
 use App\Models\Beneficiario;
+use Illuminate\Support\Facades\Auth;
 
 class BeneficiarioService
 {
 
-    public function salvar(int $id, BeneficiarioRequest $request): Beneficiario
-    {
+    public function salvar(int $id, BeneficiarioRequest $request): Beneficiario {
         $beneficiario = new Beneficiario();
-
         $beneficiario->id = $id;
+        $beneficiario = $this->getBeneficiario($beneficiario, $request);
+        $beneficiario->saveOrFail();
+
+        return $beneficiario;
+    }
+
+    public function atualizar(int $id, BeneficiarioRequest $request): Beneficiario {
+        $beneficiario = Beneficiario::find($id);
+        $beneficiario = $this->getBeneficiario($beneficiario, $request);
+        $beneficiario->saveOrFail();
+
+        return $beneficiario;
+    }
+
+    function getBeneficiario( Beneficiario $beneficiario, BeneficiarioRequest $request) : Beneficiario {
+
         $beneficiario->nome = $request->get('nome');
         $beneficiario->documento = $request->get('documento');
         $beneficiario->pais_origem = $request->get('pais_origem');
@@ -24,9 +39,7 @@ class BeneficiarioService
         $beneficiario->bairro = $request->get('bairro');
         $beneficiario->rua = $request->get('rua');
         $beneficiario->complemento_endereco = $request->get('complemento_endereco');
-        $beneficiario->historia = $request->get('historia');
 
-        $beneficiario->saveOrFail();
         return $beneficiario;
     }
 }

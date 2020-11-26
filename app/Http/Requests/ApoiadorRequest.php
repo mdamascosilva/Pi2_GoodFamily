@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class NecessidadeRequest extends FormRequest
+class ApoiadorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,16 @@ class NecessidadeRequest extends FormRequest
     public function rules()
     {
         return [
-            'categoria_id' => 'required',
-            'descricao' => 'required',
+            'nome' => 'required',
+            'cpf' => 'required',
+            'telefone' => 'required',
+            'cep' => 'required',
+            'uf' => 'required',
+            'ddd' => 'required',
+            'cidade' => 'required',
+            'bairro' => 'required',
+            'rua' => 'required',
+            'complemento_endereco' => 'required'
         ];
     }
 }

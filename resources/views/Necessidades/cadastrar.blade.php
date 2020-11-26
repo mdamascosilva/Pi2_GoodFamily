@@ -1,61 +1,42 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>ContactMe</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    </head>
+@extends('includes.layout')
 
-    <body>
-        <div class="header">
-            <h1>Good Family</h1>
+@section('navbar')
+@include('includes.navbar', ['user' => Auth::user()])
+@endsection
+
+@section('cabecalho')
+Nos informe suas necessidades a seguir!
+@endsection
+
+@section('conteudo')
+
+@include('includes.errors', ['errors' => $errors])
+
+<div class="form">
+
+    <form action="/necessidades/cadastrar" method="POST">
+
+        @csrf
+        <div>
+            <label for="categoria_id">Categoria</label>
+            <select id="categoria_id" name="categoria_id">
+                <option selected disabled>Selecione uma opção</option>
+
+                @foreach($categorias as $categoria)
+                <option key="{{ $categoria->id }}" value="{{ $categoria->id }}">{{ $categoria->categoria}}</option>
+                @endforeach
+
+            </select>
         </div>
 
-        <div class="menu">
-            <p><a href="/beneficiario/cadastrar">Cadastrar beneficiario</a></p>
-            <p><a href="/beneficiario/listar">Listar beneficiarios</a></p>
+        <div>
+            <p for="descricao">Descrição</p>
+            <textarea name="descricao" id="descricao" rows='10' cols='80' placeholder="Descrição" required></textarea>
         </div>
 
-        @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li> {{ $error }} </li>
-                        @endforeach
-                    </ul>
-                </div>
-        @endif
-
-
-        <div class="container">
-            <h2>Nos informe suas necessidades a seguir!</h2>
-            <div class="form">
-                <form action="/necessidade/cadastrar/" method="POST">
-
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    <div>
-                        <select id="categoria_id" name="categoria_id">
-                            <option selected disabled>Selecione uma opção</option>
-                            
-                            @foreach($categoria as $cat)
-                                <option key="{{ $cat->id }}" value="{{ $cat->id }}" >{{ $cat->categoria}}</option>
-                            @endforeach
-                    
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="descricao">Descrição</label>
-                        <textarea name="descricao" id="descricao" rows='10' cols='80' placeholder="Descrição" required></textarea>    
-                    </div>
-
-                    <div>
-                        <button type="submit" class="btn btn-default">Enviar</button>
-                    </div>
-                </form>
-            </div>
+        <div>
+            <button type="submit" class="btn btn-default">Salvar</button>
         </div>
-
-    </body>
-</html>
+    </form>
+</div>
+@endsection

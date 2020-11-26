@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('includes.layout')
 
 @section('navbar')
-@include('navbar', ['user' => Auth::user()])
+@include('includes.navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
@@ -10,7 +10,7 @@ Beneficiário
 
 @section('conteudo')
 
-@include('errors', ['errors' => $errors])
+@include('includes.errors', ['errors' => $errors])
 
 @if ($beneficiario)
 
@@ -47,6 +47,11 @@ Beneficiário
 <div>
     <p>CEP</p>
     <p>{{ $beneficiario->cep }}</p>
+</div>
+
+<div>
+    <p>História</p>
+    <p>{{ $beneficiario->historia }}</p>
 </div>
 
 <div>                

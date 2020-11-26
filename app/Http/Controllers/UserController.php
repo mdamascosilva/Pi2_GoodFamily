@@ -19,8 +19,11 @@ class UserController extends Controller{
      */
 
     public function registro(string $opcao){
-
-        return view('/Auth/registrar', ['opcao' => $opcao]);
+        if (Auth::check()){
+            return redirect()->route('index');
+        } else {
+            return view('/Auth/registrar', ['opcao' => $opcao]);
+        }
     }
 
     public function registrar(RegistroRequest $request, string $opcao){

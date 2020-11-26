@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('includes.layout')
 
 @section('navbar')
-@include('navbar', ['user' => Auth::user()])
+@include('includes.navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
@@ -10,7 +10,7 @@ Alterar dados cadastrados
 
 @section('conteudo')
 
-@include('errors', ['errors' => $errors])
+@include('includes.errors', ['errors' => $errors])
 
 <div class="form">
     @if ($beneficiario)
@@ -19,12 +19,12 @@ Alterar dados cadastrados
 
         <div>
             <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" value="{{ $beneficiario->nome }}">
+            <input type="text" id="nome" name="nome" value="{{ $beneficiario->nome }}" />
         </div>
 
         <div>
             <label for="documento">Nº de documento</label>
-            <input type="text" id="documento" name="documento" value="{{ $beneficiario->documento }}">
+            <input type="text" id="documento" name="documento" value="{{ $beneficiario->documento }}" />
         </div>
 
         <div>
@@ -36,21 +36,17 @@ Alterar dados cadastrados
                 <option key="2" value="Bolivia">Bolivia</option>
             </select>
         </div>
-
+        <script>document.getElementById('pais_origem').value = '<?php echo $beneficiario->pais_origem ?? '' ?>';</script>
+        
         <div>
             <label for="telefone">Telefone</label>
-            <input type="text" id="telefone" name="telefone" value="{{ $beneficiario->telefone }}">
+            <input type="text" id="telefone" name="telefone" value="{{ $beneficiario->telefone }}" />
         </div>
 
-        @include('includes.form_endereco')
+        @include('includes.form_endereco', ['usuario' => $beneficiario ])
 
         <div>
-            <label for="historia">Sua história</label>
-            <textarea name="historia" id="historia" cols="30" rows="10">{{ $beneficiario->historia }}</textarea>
-        </div>
-
-        <div>
-            <button type="submit" class="btn btn-default">Alterar</button>
+            <input type="submit" class="btn btn-default" value="Alterar" />
         </div>
     </form>
 

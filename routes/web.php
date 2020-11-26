@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\ApoiadoresController;
+use App\Http\Controllers\ApoiadorController;
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NecessidadeController;
-use App\Http\Controllers\RegioesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +22,33 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index'])
     ->name('index');
 
+Route::get('/noticias', [IndexController::class, 'noticias']);
+
+Route::get('/contato', [IndexController::class, 'contato']);
+
+Route::get('/quem-somos', [IndexController::class, 'quemSomos']);
+
+
+
+Route::get('/registrar/{opcao}', [UserController::class, 'registro']);
+
+Route::post('/registrar/{opcao}', [UserController::class, 'registrar']);
+
+
+
+Route::get('/login', [LoginController::class, 'login']);
+
+Route::post('/login', [LoginController::class, 'autenticar']);
+
+Route::get('/logout', [LoginController::class, 'logout']);
+
+
+
+Route::get('/senha', [UserController::class, 'alterarSenha']);
+
+Route::post('/senha', [UserController::class, 'gravarNovaSenha']);
+
+
 
 Route::get('/beneficiario/cadastrar', [BeneficiarioController::class, 'cadastro']);
 
@@ -38,61 +64,42 @@ Route::post('/beneficiario/historia', [BeneficiarioController::class, 'gravarHis
 
 Route::delete('/beneficiario/excluir', [BeneficiarioController::class, 'excluir']);
 
-
 Route::get('/beneficiario/consultar', [BeneficiarioController::class, 'consultar']);
 
-Route::get('/beneficiario/listar', [BeneficiarioController::class, 'listar']);
+//Route::get('/beneficiario/listar', [BeneficiarioController::class, 'listar']);
 
 
-Route::get('/apoiador/cadastrar/{id}', [ApoiadoresController::class, 'cadastro']);
 
-Route::post('/apoiador/cadastrar/{id}', [ApoiadoresController::class, 'gravar']);
+Route::get('/apoiador/cadastrar', [ApoiadorController::class, 'cadastro']);
 
-Route::get('/apoiador/alterar/{id}', [ApoiadoresController::class, 'alterar']);
+Route::post('/apoiador/cadastrar', [ApoiadorController::class, 'gravar']);
 
-Route::post('/apoiador/alterar/{id}', [ApoiadoresController::class, 'atualizar']);
+Route::get('/apoiador/alterar', [ApoiadorController::class, 'alterar']);
 
-Route::post('/apoiador/excluir/{id}', [ApoiadoresController::class, 'excluir']);
+Route::post('/apoiador/alterar', [ApoiadorController::class, 'atualizar']);
 
-Route::get('/apoiador/consultar', [ApoiadoresController::class, 'consultar']);
+Route::delete('/apoiador/excluir', [ApoiadorController::class, 'excluir']);
 
-Route::get('/apoiador/listar', [ApoiadoresController::class, 'listar']);
+Route::get('/apoiador/consultar', [ApoiadorController::class, 'consultar']);
 
-
-Route::get('/necessidade/cadastrar', [NecessidadeController::class, 'cadastro']);
-
-Route::post('/necessidade/cadastrar', [NecessidadeController::class, 'gravar']);
-
-Route::get('/necessidade/alterar/{id}', [NecessidadeController::class, 'alterar']);
-
-Route::post('/necessidade/alterar/{id}', [NecessidadeController::class, 'atualizar']);
-
-Route::post('/necessidade/excluir/{id}', [NecessidadeController::class, 'excluir']);
-
-Route::get('/necessidade/consultar', [NecessidadeController::class, 'consultar']);
-
-Route::get('/necessidade/listar', [NecessidadeController::class, 'listar']);
+//Route::get('/apoiador/listar', [ApoiadorController::class, 'listar']);
 
 
-Route::get('/login', [LoginController::class, 'login']);
 
-Route::post('/login', [LoginController::class, 'autenticar']);
+Route::get('/necessidades/cadastrar', [NecessidadeController::class, 'cadastro']);
 
-Route::get('/logout', [LoginController::class, 'logout']);
+Route::post('/necessidades/cadastrar', [NecessidadeController::class, 'gravar']);
 
+Route::get('/necessidades/alterar/{id}', [NecessidadeController::class, 'alterar']);
 
-Route::get('/senha', [UserController::class, 'alterarSenha']);
+Route::post('/necessidades/alterar/{id}', [NecessidadeController::class, 'atualizar']);
 
-Route::post('/senha', [UserController::class, 'gravarNovaSenha']);
+Route::delete('/necessidades/excluir/{id}', [NecessidadeController::class, 'excluir']);
 
-Route::get('/registrar/{opcao}', [UserController::class, 'registro']);
+Route::get('/necessidades/listar', [NecessidadeController::class, 'listar']);
 
-Route::post('/registrar/{opcao}', [UserController::class, 'registrar']);
+Route::get('/necessidades/consultar', [NecessidadeController::class, 'consultar']);
 
+Route::get('/necessidades/buscar-necessidades', [NecessidadeController::class, 'buscarNecessidades']);
 
-Route::get('/regiao/{uf}', [RegioesController::class, 'getRegiao']);
-
-Route::get('/cidade/{regiao}', [RegioesController::class, 'getCidade']);
-
-Route::get('/bairro/{cidade}', [RegioesController::class, 'getBairro']);
-
+Route::get('/necessidades/consultar/{id}', [NecessidadeController::class, 'detalhes']);

@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('includes.layout')
 
 @section('navbar')
-@include('navbar')
+@include('includes.navbar', ['user' => Auth::user()])
 @endsection
 
 @section('cabecalho')
@@ -10,9 +10,9 @@ Login
 
 @section('conteudo')
 
-@include('errors', ['errors' => $errors])
+@include('includes.errors', ['errors' => $errors])
 
-@include('mensagem', ['mensagem' => $mensagem ?? ''])
+@include('includes.mensagem', ['mensagem' => $mensagem ?? ''])
 
 <div class="form">
     <form action="/login" method="POST">

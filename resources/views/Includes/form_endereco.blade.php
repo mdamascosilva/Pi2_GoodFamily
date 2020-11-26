@@ -1,12 +1,11 @@
     <div>
         <label for="cep">Cep</label>
-        <input name="cep" type="text" id="cep" value="" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
+        <input name="cep" type="text" id="cep" value="{{ $usuario->cep ?? '' }}" size="10" maxlength="9" onblur="pesquisacep(this.value);" />
     </div>
 
     <div>
         <label for="uf">UF</label>
-        <select id="uf" name="uf">
-            <option selected disabled>Selecione uma opção</option>
+        <select id="uf" name="uf" >
             <option key="1" value="AC">Acre</option>
             <option key="2" value="AL">Alagoas</option>
             <option key="3" value="AP">Amapá</option>
@@ -37,28 +36,29 @@
         </select>
     </div>
 
-    <input type="hidden" name="ddd" id="ddd" value="">
+    <input type="hidden" name="ddd" id="ddd" value="{{ $usuario->ddd ?? '' }}" />
 
     <div>
         <label for="cidade">Cidade</label>
-        <input name="cidade" type="text" id="cidade" size="40" value="" />
+        <input name="cidade" type="text" id="cidade" size="40" value="{{ $usuario->cidade ?? '' }}" />
     </div>
 
     <div>
         <label for="bairro">Bairro</label>
-        <input name="bairro" type="text" id="bairro" size="40" value="" />
+        <input name="bairro" type="text" id="bairro" size="40" value="{{ $usuario->bairro ?? '' }}" />
     </div>
 
     <div>
         <label for="rua">Rua</label>
-        <input name="rua" type="text" id="rua" size="60" value="" />
+        <input name="rua" type="text" id="rua" size="60" value="{{ $usuario->rua ?? '' }}" />
     </div>
 
     <div>
         <label for="complemento_endereco">Complemento</label>
-        <input type="text" id="complemento_endereco" name="complemento_endereco" placeholder="Nº, Bloco, Ap" value="">
+        <input type="text" id="complemento_endereco" name="complemento_endereco" placeholder="Nº, Bloco, Ap" value="{{ $usuario->complemento_endereco ?? '' }}">
     </div>
 
 
     <!-- Adicionando Javascript -->
     <script src="/js/cep.js"></script>
+    <script>document.getElementById('uf').value = '<?php echo $usuario->uf ?? '' ?>';</script>

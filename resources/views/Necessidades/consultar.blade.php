@@ -1,67 +1,45 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>ContactMe</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    </head>
+@extends('includes.layout')
 
-    <body>
-        <div class="header">
-            <h1>Good Family</h1>
+@section('navbar')
+@include('includes.navbar', ['user' => Auth::user()])
+@endsection
+
+@section('cabecalho')
+Consulte alguma necessidade
+@endsection
+
+@section('conteudo')
+
+@include('includes.errors', ['errors' => $errors])
+
+<form method='POST'>
+    <div class='row'>
+        <div class='form-group col-sm-2'>
+            <label class="control-label" for='categoria'>Categoria</label>
+
+            <select name="categoria" class="form-control" id="categoria" onchange='getNecessidades()'>
+                <option value="#" selected disabled>Selecione uma opção</option>
+                @foreach($categorias as $categoria)
+                <option key="{{ $categoria->id }}" value="{{ $categoria->id }}">{{ $categoria->categoria}}</option>
+                @endforeach
+            </select>
         </div>
 
-        <div class="menu">
-            <p><a href="/beneficiario/cadastrar">Cadastrar beneficiario</a></p>
-            <p><a href="/beneficiario/listar">Listar beneficiarios</a></p>
+        <div class="form-group col-sm-4">
+            <label class="control-label" for='cidade'>Cidade</label>
+            <input type='text' onclick='getNecessidades()' class="form-control" size='40' id='cidade' name='cidade'/>
+        </div>
+        <div class='form-group col-sm-2'>
+            <label class="control-label" for='bairro'>Bairro</label>
+            <input type='text' onclick='getNecessidades()' class="form-control" id='bairro' name='bairro' />
         </div>
 
-        @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li> {{ $error }} </li>
-                        @endforeach
-                    </ul>
-                </div>
-        @endif
+    </div>
+</form>
 
-        <div class="container">
-            <h2>Beneficiário</h2>
-            <div class="form">
-                @if ($beneficiario)
 
-                    <div>
-                        <p>CPF</p>
-                        <p>{{ $beneficiario->cpf }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Telefone</p>
-                        <p>{{ $beneficiario->telefone }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Endereço</p>
-                        <p>{{ $beneficiario->endereco }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Cidade</p>
-                        <p>{{ $beneficiario->cidade }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>Estado</p>
-                        <p>{{ $beneficiario->estado }}</p>
-                    </div>
-                    
-                    <div>
-                        <p>CEP</p>
-                        <p>{{ $beneficiario->cep }}</p>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </body>
-</html>
+<div class="lista" id="necessidades"></div>
+
+<script src="/js/request.js"></script>
+<script src="/js/getNecessidades.js"></script>
+@endsection
