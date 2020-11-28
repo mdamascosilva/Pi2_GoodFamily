@@ -1,61 +1,56 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<h1>Projeto Good Family</h1>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## **Sobre o Projeto**
+Este projeto é um trabalho acadêmico para a disciplina Projeto Integrador II, do curso de Análise e Desenvolvimento de Sistemas, do Centro Universitário Municipal de São José. O objetivo do projeto é criar uma plataforma digital para conectar famílias estrangeiras, ONGs, instituições e pessoas com a intenção de ajudar essas famílias desamparadas, e auxiliá-las a se estabelecer no país
 
-## About Laravel
+## **Sobre o Sistema**
+O sitema foi desenvolvido na linguagem livre e open-source PHP, utilizando o framework LARAVEL. Integrando o Laravel ao MYSQL para criação e configuração do Banco de Dados Relacional. E para a interface visual do sistema foi utilizado o framework BOOTSTRAP, que desenvolve componentes com HTML, CSS e JavaScript
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## **Sobre o Laravel**
+Laravel é um framework de aplicação web com sintaxe expressiva e elegante. Acreditamos que o desenvolvimento deve ser uma experiência agradável e criativa para ser verdadeiramente gratificante. O Laravel tira a dor do desenvolvimento facilitando tarefas comuns usadas em muitos projetos da web.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## **Infra-estrutura necessária**
+Para rodar a aplicação na sua maquina, é necessário a instalação das seguintes tecnologias:
+- Php 
+- Laravel
+- Composer 
+- MYSQL
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## **Como utilizar**
 
-## Learning Laravel
+Para utilização do sistema, é necessário "clonar" o projeto pelo GIT para a máquina local e a crir um Banco de Dados MYSQL com o nome "good_family". 
+```
+- Clonar o projeto:
+$ git clone https://github.com/mdamascosilva/Pi2_GoodFamily.git
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Entrar no repositório do Projeto:
+$ cd Pi2_GoodFamily
+```
+Após a clonagem do projeto e criação do Banco de Dados "good_family", executar os comandos no diretório em que se encontra o projeto para configuração do Banco de Dados.
+```
+#Criar tabelas e migrar configurações do projeto para o banco de dados:
+$php artisan migrate
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#Configurar tabelas pré-definidas pelo projeto:
+$php artisan db:seed
+```
+## **Inicializando o Servidor**
+Para inicializar o servidor é necessário rodar o comando abaixo no diretório do projeto:
 
-## Laravel Sponsors
+    php artisan serve
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Podendo ser acessado pela url:
 
-### Premium Partners
+    http://127.0.0.1:8000
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
+## **Colaboradores**
+https://github.com/alysonmestevao
 
-## Contributing
+https://github.com/luksdvlp
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+https://github.com/mdamascosilva
 
-## Code of Conduct
+https://github.com/UlyssesWerlich
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## **Agradecimentos**
+Para a realização deste projeto, queremos agradecer aos professores do Centro Universitário Municipal de São José, por todo o conhecimento e contribuição ao longo do curso. Em específico ao Professor Osmar da Cunha Filho, que ministrou a disciplina Projeto Integrador II, onde tivemos a oportunidade de desenvolver esse projeto.
