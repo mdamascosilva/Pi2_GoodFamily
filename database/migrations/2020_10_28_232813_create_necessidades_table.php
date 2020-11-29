@@ -19,6 +19,7 @@ class CreateNecessidadesTable extends Migration
             $table->integer('beneficiario_id');
             $table->string('descricao');
             $table->string('status_necessidade');
+            $table->integer('atendimento_id')->nullable();
             $table->timestamps();
         });
     }

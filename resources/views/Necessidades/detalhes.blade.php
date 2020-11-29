@@ -16,9 +16,11 @@ Consultar necessidade
 
 <div class="bloco">
     <div class="linha">
-        <a href="/necessidades/consultar/{{ $necessidade->id }}">
-            Detalhes
-        </a>
+        <form action="/atendimentos/iniciar/{{ $necessidade->id }}" method="POST"
+        onsubmit="return confirm('Confirmar atendimento?')">
+            @csrf
+            <button type="submit" class="btn btn-success">Atender</button>
+        </form>
     </div>
 
     <div class="linha">

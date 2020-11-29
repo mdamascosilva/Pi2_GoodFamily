@@ -25,6 +25,10 @@ class CreateApoiadoresTable extends Migration
             $table->string('bairro');
             $table->string('rua');
             $table->string('complemento_endereco');
+            $table->foreign('id')
+                ->references('id')
+                ->on('users');
+
             $table->timestamps();
         });
     }

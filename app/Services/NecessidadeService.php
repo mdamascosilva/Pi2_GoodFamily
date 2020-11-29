@@ -57,6 +57,7 @@ class NecessidadeService
     {
         return DB::table('necessidades')
         ->where('beneficiarios.ddd', 'like', $apoiador->ddd)
+        ->where('necessidades.status_necessidade', 'like', 'aberto')
         ->join('categoria_necessidades', 'necessidades.categoria_id', '=', 'categoria_necessidades.id')
         ->join('beneficiarios', 'necessidades.beneficiario_id', '=', 'beneficiarios.id')
         ->select(
@@ -73,6 +74,7 @@ class NecessidadeService
     public function pesquisarNecessidades($categoria, $cidade, $bairro)
     {
         return DB::table('necessidades')
+            ->where('necessidades.status_necessidade', 'like', 'aberto')
             ->where('categoria_necessidades.id', 'like' , $categoria)
             ->where('beneficiarios.cidade', 'like' , $cidade . '%' )
             ->where('beneficiarios.bairro', 'like' , $bairro . '%' )

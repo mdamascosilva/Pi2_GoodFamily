@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApoiadorController;
+use App\Http\Controllers\AtendimentoController;
 use App\Http\Controllers\BeneficiarioController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
@@ -106,3 +107,17 @@ Route::get('/necessidades/consultar', [NecessidadeController::class, 'consultar'
 Route::get('/necessidades/pesquisar-necessidades', [NecessidadeController::class, 'pesquisarNecessidades']);
 
 Route::get('/necessidades/consultar/{id}', [NecessidadeController::class, 'detalhes']);
+
+
+
+Route::post('/atendimentos/iniciar/{idNecessidade}', [AtendimentoController::class, 'atender']);
+
+Route::get('/atendimentos/listar', [AtendimentoController::class, 'listar']);
+
+Route::get('/atendimentos/consultar/{id}', [AtendimentoController::class, 'consultar']);
+
+Route::get('/atendimentos/finalizar/{id}', [AtendimentoController::class, 'descreverFinalizacao']);
+
+Route::post('/atendimentos/finalizar/{id}', [AtendimentoController::class, 'finalizar']);
+
+Route::delete('/atendimentos/cancelar/{id}', [ AtendimentoController::class, 'cancelar']);

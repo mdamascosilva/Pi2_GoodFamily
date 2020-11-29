@@ -35,6 +35,7 @@
 
                     @if($user->user_type == 'apoiador')
                     <a class="dropdown-item" href="/necessidades/consultar">Ajude alguem perto de você!</a>
+                    <a class="dropdown-item" href="/atendimentos/listar">Atendimentos pendentes</a>
                     @endif
 
                     <a class="dropdown-item text-danger" href="/logout">Sair</a>
