@@ -2,34 +2,54 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Apoiador;
+use App\Services\NecessidadeService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class IndexController extends Controller
 {
-    public function index(Request $request){
-        $user = Auth::user();
- 
-            $mensagem = $request->session()->get('mensagem');
-            return view('index', compact('user', 'mensagem'));
-        
-    }
 
-    public function apoiadorIndex(Request $request){
-        $user = Auth::user();
+    public function index(Request $request)
+    {
+        if (Auth::check()) 
+            return call_user_func([$this, Auth::user()->user_type . '_index'], $request);
+    
+        $necessidadeService = new NecessidadeService();
+
+        $numeros = $necessidadeService->buscarNumerosParaGrafico();
+        $necessidades =$necessidadeService->buscarNecessidadesAleatorias();
         $mensagem = $request->session()->get('mensagem');
-        return view('index', compact('user', 'mensagem'));
+        return view('index', compact('numeros', 'necessidades', 'mensagem')); 
     }
 
-    public function noticias(){
+    public function apoiador_index(Request $request)
+    {
+        $apoiador = Apoiador::findOrFail(Auth::id());
+        $necessidadeService = new NecessidadeService();
+        $necessidades = $necessidadeService->buscarNecessidadesProximoAoApoiador($apoiador);
+        $mensagem = $request->session()->get('mensagem');
+        return view('Apoiadores.index', compact('mensagem', 'necessidades'));
+    }
+
+    public function beneficiario_index(Request $request)
+    {
+        $mensagem = $request->session()->get('mensagem');
+        return view('Beneficiarios.index', compact('mensagem'));
+    }
+
+    public function noticias()
+    {
         return view('noticias.noticia');
     }
 
-    public function contato(){
+    public function contato()
+    {
         return view('outros.contato');
     }
 
-    public function quemSomos(){
+    public function quemSomos()
+    {
         return view('outros.quem_somos');
     }
 }

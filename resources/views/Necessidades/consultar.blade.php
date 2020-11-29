@@ -17,8 +17,8 @@ Consulte alguma necessidade
         <div class='form-group col-sm-2'>
             <label class="control-label" for='categoria'>Categoria</label>
 
-            <select name="categoria" class="form-control" id="categoria" onchange='getNecessidades()'>
-                <option value="#" selected disabled>Selecione uma opção</option>
+            <select name="categoria" class="form-control" id="categoria" >
+                <option value="%%" selected>Todos</option>
                 @foreach($categorias as $categoria)
                 <option key="{{ $categoria->id }}" value="{{ $categoria->id }}">{{ $categoria->categoria}}</option>
                 @endforeach
@@ -27,13 +27,14 @@ Consulte alguma necessidade
 
         <div class="form-group col-sm-4">
             <label class="control-label" for='cidade'>Cidade</label>
-            <input type='text' onclick='getNecessidades()' class="form-control" size='40' id='cidade' name='cidade'/>
+            <input type='text' class="form-control" size='40' id='cidade' name='cidade'/>
         </div>
         <div class='form-group col-sm-2'>
             <label class="control-label" for='bairro'>Bairro</label>
-            <input type='text' onclick='getNecessidades()' class="form-control" id='bairro' name='bairro' />
+            <input type='text' class="form-control" id='bairro' name='bairro' />
         </div>
 
+        <span><a href='javascript:getNecessidades()'>Consultar</a></span>
     </div>
 </form>
 

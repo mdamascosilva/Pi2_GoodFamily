@@ -4,14 +4,15 @@ function getNecessidades() {
     var bairro = document.getElementById("bairro").value;
     var divNecessidades = document.getElementById("necessidades");
 
-    if (categoria != "#" || cidade.length > 5 || bairro.length > 5) {
+    if (categoria != "%%" || cidade.length > 5 || bairro.length > 5) {
 
         var request = getRequest();
-        request.open("GET", "/necessidades/buscar-necessidades?" +
+        
+        request.open("GET", "/necessidades/pesquisar-necessidades?" +
             "categoria=" + categoria +
             "&cidade=" + cidade +
             "&bairro=" + bairro);
-
+        
         request.onreadystatechange = function () {
 
             if (request.readyState === 4 && request.status == 200) {
@@ -25,6 +26,7 @@ function getNecessidades() {
         request.send(null);
     } else {
         divNecessidades.innerHTML = '';
+        alert('Necessário preencher pelo menos uma informação para consulta')
     }
 }
 

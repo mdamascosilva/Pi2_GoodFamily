@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NecessidadeRequest;
+use App\Models\Apoiador;
 use App\Models\CategoriaNecessidade;
 use App\Models\Necessidade;
 use App\Models\User;
@@ -67,19 +68,9 @@ class NecessidadeController extends Controller
     }
 
     #lista todos os casos
-    public function listar()
+    public function listarNecessidadesDoBeneficiario(NecessidadeService $necessidadeService)
     {
-
-        $necessidades = DB::table('necessidades')
-            ->where('beneficiario_id', Auth::id())
-            ->join('categoria_necessidades', 'necessidades.categoria_id', '=', 'categoria_necessidades.id')
-            ->select(
-                'necessidades.id as id',
-                'necessidades.descricao as descricao',
-                'categoria_necessidades.categoria as categoria',
-                'categoria_necessidades.id as categoria_id'
-            )
-            ->get();
+        $necessidades = $necessidadeService->listarNecessidadesDoBeneficiario();
         return view('Necessidades.listar', compact('necessidades'));
     }
 
@@ -90,42 +81,18 @@ class NecessidadeController extends Controller
         return view('Necessidades.consultar', compact('categorias'));
     }
 
-    public function buscarNecessidades()
+    public function pesquisarNecessidades(Request $request, NecessidadeService $necessidadeService)
     {
-        return DB::table('necessidades')
-        //->where('beneficiario_id', Auth::id())
-        ->join('categoria_necessidades', 'necessidades.categoria_id', '=', 'categoria_necessidades.id')
-        ->join('beneficiarios', 'necessidades.beneficiario_id', '=', 'beneficiarios.id')
-        ->select(
-            'necessidades.id as id',
-            'necessidades.descricao as descricao',
-            'categoria_necessidades.categoria as categoria',
-            'beneficiarios.cidade as cidade',
-            'beneficiarios.bairro as bairro',
-        )
-        ->get();
+        return $necessidadeService->pesquisarNecessidades(
+            $request->get('categoria'),
+            $request->get('cidade'),
+            $request->get('bairro')
+        );
     }
 
-    public function detalhes(int $id)
+    public function detalhes(int $id, NecessidadeService $necessidadeService)
     {
-        $necessidades = DB::table('necessidades')
-            ->where('necessidades.id', $id)
-            ->join('beneficiarios', 'necessidades.beneficiario_id', '=', 'beneficiarios.id')
-            ->join('categoria_necessidades', 'necessidades.categoria_id', '=', 'categoria_necessidades.id')
-            ->select(
-                'necessidades.id as id',
-                'categoria_necessidades.categoria as categoria',
-                'necessidades.descricao as descricao',
-                'beneficiarios.nome as nome',
-                'beneficiarios.telefone as telefone',
-                'beneficiarios.cidade as cidade',
-                'beneficiarios.bairro as bairro',
-                'beneficiarios.rua as rua',
-                'beneficiarios.complemento_endereco as complemento_endereco',
-                'beneficiarios.historia as historia'
-            )
-            ->get();
-
+        $necessidades = $necessidadeService->detalhesNecessidade($id);
         return view('Necessidades.detalhes', compact('necessidades'));
     }
 }
