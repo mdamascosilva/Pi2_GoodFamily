@@ -54,8 +54,7 @@ Beneficiário
     <p>{{ $beneficiario->historia }}</p>
 </div>
 
-<div>                
-
+<div>         
     <form method="POST" 
         action="/beneficiario/excluir" 
         onsubmit="return confirm('Tem certeza que deseja remover sua conta, {{ addslashes($beneficiario->nome)}}?')">

@@ -14,32 +14,43 @@ Agora, precisamos de algumas informações para fazer o cadastro de apoiador
 @include('includes.errors', ['errors' => $errors])
 
 <div class="form">
-    <form action="/apoiador/cadastrar" method="POST">
-
+    <form class="needs-validation" novalidate action="/apoiador/cadastrar" method="POST">
         @csrf
 
-        <div>
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" value="{{ $user->name }}" name="nome">
-        </div>
+        <div class="form-row">
+            <div class="col-md-6 mb-3">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{ $user->name }}" required>
+                <div class="invalid-feedback">
+                    Por favor informe seu nome
+                </div>
+            </div>
 
-        <div>
-            <label for="cpf">CPF</label>
-            <input type="text" id="cpf" name="cpf">
-        </div>
+            <div class="col-md-3 mb-3">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" required>
+                <div class="invalid-feedback">
+                    Por favor informe o CPF
+                </div>
+            </div>
 
-        <div>
-            <label for="telefone">Telefone</label>
-            <input type="text" id="telefone" name="telefone">
+            <div class="col-md-3 mb-3">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" id="telefone" name="telefone" required>
+                <div class="invalid-feedback">
+                    Por favor informe um número de telefone
+                </div>
+            </div>
+
         </div>
 
         @include('includes.form_endereco')
 
-        <div>
-            <button type="submit" class="btn btn-default">Enviar</button>
-        </div>
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+
     </form>
 </div>
 
+<script src="/js/validation.js"></script>
 
 @endsection
