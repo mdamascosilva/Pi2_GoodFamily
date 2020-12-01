@@ -11,10 +11,10 @@ Laravel é um framework de aplicação web com sintaxe expressiva e elegante. Ac
 
 ## **Infra-estrutura necessária**
 Para rodar a aplicação na sua maquina, é necessário a instalação das seguintes tecnologias:
-- Php 
-- Laravel
-- Composer 
-- MYSQL
+- Php       (version 7.4.3)
+- Laravel   (version 8)
+- Composer  (version 1.10.13)
+- MYSQL     (version 8.0.22)
 
 ## **Como utilizar**
 
@@ -26,18 +26,28 @@ $ git clone https://github.com/mdamascosilva/Pi2_GoodFamily.git
 - Entrar no repositório do Projeto:
 $ cd Pi2_GoodFamily
 ```
+Configurar Ambiente MYSQL. No arquivo .env
+```
+ DB_CONNECTION="Digite a conexão"
+ DB_HOST="Digite o Host"
+ DB_PORT="Digite a Porta"
+ DB_DATABASE="Digite o nome doBbanco de Dados"
+ DB_USERNAME="Digite o Usuário"
+ DB_PASSWORD="Digite a Senha"
+
+```
 Após a clonagem do projeto e criação do Banco de Dados "good_family", executar os comandos no diretório em que se encontra o projeto para configuração do Banco de Dados.
 ```
-#Criar tabelas e migrar configurações do projeto para o banco de dados:
-$php artisan migrate
+# Criar tabelas e migrar configurações do projeto para o banco de dados:
+$ php artisan migrate
 
-#Configurar tabelas pré-definidas pelo projeto:
-$php artisan db:seed
+# Configurar tabelas pré-definidas pelo projeto:
+$ php artisan db:seed
 ```
 ## **Inicializando o Servidor**
 Para inicializar o servidor é necessário rodar o comando abaixo no diretório do projeto:
 
-    php artisan serve
+    $ php artisan serve
 
 Podendo ser acessado pela url:
 
