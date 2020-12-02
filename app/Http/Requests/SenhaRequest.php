@@ -26,7 +26,7 @@ class SenhaRequest extends FormRequest
         return [
             'password' => ['required', 'string', 'min:8'],
             'new_password' => ['required', 'string', 'min:8'],
-            'confirm_password' => ['required', 'string', 'min:8'],
+            'confirm' => ['required', 'string', 'min:8'],
         ];
     }
 }

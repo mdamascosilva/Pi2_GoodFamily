@@ -8,9 +8,10 @@ use App\Models\Apoiador;
 class ApoiadorService
 {
 
-    public function salvar(int $id, ApoiadorRequest $request): Apoiador {
+    public function salvar(int $id, string $nome, ApoiadorRequest $request): Apoiador {
         $apoiador = new Apoiador();
         $apoiador->id = $id;
+        $apoiador->nome = $nome;
         $apoiador = $this->getApoiador( $apoiador, $request);
         $apoiador->saveOrFail();
 
@@ -27,7 +28,6 @@ class ApoiadorService
 
     function getApoiador( Apoiador $apoiador, ApoiadorRequest $request) : Apoiador {
 
-        $apoiador->nome = $request->get('nome');
         $apoiador->cpf = $request->get('cpf');
         $apoiador->telefone = $request->get('telefone');
         $apoiador->cep = $request->get('cep');

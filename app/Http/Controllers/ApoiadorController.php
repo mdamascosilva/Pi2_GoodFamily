@@ -17,10 +17,8 @@ class ApoiadorController extends Controller
     }
 
     public function gravar(ApoiadorRequest $request, ApoiadorService $apoiadorService){
-        echo $request;
-
         $user = User::findOrFail(Auth::id());
-        $apoiador = $apoiadorService->salvar( $user->id, $request );
+        $apoiador = $apoiadorService->salvar( $user->id, $user->nome, $request );
         $request->session()->flash(
             'mensagem',
             'Cadastro do apoiador ' . $apoiador->nome . ' foi feita com sucesso!'

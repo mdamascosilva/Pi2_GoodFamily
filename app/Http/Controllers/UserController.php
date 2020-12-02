@@ -22,13 +22,13 @@ class UserController extends Controller{
         if (Auth::check()){
             return redirect()->route('index');
         } else {
-            return view('/Auth/registrar', ['opcao' => $opcao]);
+            return view('Auth.registrar', ['opcao' => $opcao]);
         }
     }
 
     public function registrar(RegistroRequest $request, string $opcao){
         $user = User::create([
-            'name' => $request->get('nome'),
+            'nome' => $request->get('nome'),
             'email' => $request->get('email'),
             'user_type' => $opcao,
             'password' => Hash::make($request->get('password')),
@@ -40,24 +40,39 @@ class UserController extends Controller{
         return redirect('/'. $user->user_type .'/cadastrar');
     }
 
-    public function alterarSenha(){
-        return view('/Auth/senha', ['user' => Auth::user()]);
+    public function alterarSenha(Request $request){
+        $mensagem = $request->session()->get('mensagem');
+        return view('Auth.senha', compact('mensagem'));
     }
 
     public function gravarNovaSenha(SenhaRequest $request){
 
         $user = User::findOrFail(Auth::id());
-        $credentials = $request->only('email', 'password');
+
+        $credentials = [
+            'email' => $user->email,
+            'password' => $request->get('password')
+        ];
 
         if ((Auth::attempt($credentials)) && 
-        $request->get('new_password') == $request->get('confirm_password')){
+        $request->get('new_password') == $request->get('confirm')){
 
             $user->password = Hash::make($request->get('new_password'));
             $user->update();
-            return view('/index', ['mensagem' => 'Senha alterada com sucesso']);
+
+            $request->session()->flash(
+                'mensagem',
+                'Senha alterada com sucesso!'
+            );
+            return redirect()->route('index');
             
         } else {
-            return view('/Auth/senha', ['user' => Auth::user(), 'mensagem' => 'Erro ao gravar senha, favor tentar novamente']);
+
+            $request->session()->flash(
+                'mensagem',
+                'Erro ao gravar nova senha, favor tentar novamente'
+            );
+            return redirect("/senha");
         }
     }
 }

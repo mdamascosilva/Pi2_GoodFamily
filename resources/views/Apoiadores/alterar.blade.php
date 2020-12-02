@@ -14,17 +14,14 @@ Alterar dados cadastrados
 
 <div class="form">
     @if ($apoiador)
-    <form action="/apoiador/alterar" method="POST">
+    <form class="needs-validation" novalidate action="/apoiador/alterar" method="POST">
 
         @csrf
 
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="{{ $apoiador->nome }}" required>
-                <div class="invalid-feedback">
-                    Por favor informe seu nome
-                </div>
+                <input type="text" class="form-control" value="{{ $apoiador->nome }}" disabled readonly>
             </div>
 
             <div class="col-md-3 mb-3">
@@ -46,7 +43,8 @@ Alterar dados cadastrados
 
         @include('includes.form_endereco', ['usuario' => $apoiador ])
 
-        <button type="submit" class="btn btn-default">Alterar</button>
+        <button type="submit" class="btn col-md-1 btn-success">Alterar</button>
+        <a href="/" class="btn col-md-1 btn-secondary" role="button" >Cancelar</a>
 
     </form>
     @endif

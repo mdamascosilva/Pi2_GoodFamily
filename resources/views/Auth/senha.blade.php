@@ -5,7 +5,7 @@
 @endsection
 
 @section('cabecalho')
-Good Family
+Alterar senha
 @endsection
 
 @section('conteudo')
@@ -14,31 +14,44 @@ Good Family
 
 @include('includes.mensagem', ['mensagem' => $mensagem ?? ''])
 
-<h2>Alterar senha</h2>
 <div class="form">
-    <form action="/senha" method="POST">
+    <form class="needs-validation" novalidate action="/senha" method="POST">
 
-        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="email" value="{{ $user->email }}">
+        @csrf
 
-        <div>
-            <label for="senha_atual">Senha atual</label>
-            <input type="password" id="password" name="password">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="password">Senha atual</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+                <div class="invalid-feedback">
+                    Por favor informe sua senha
+                </div>
+            </div>
         </div>
 
-        <div>
-            <label for="password">Nova senha</label>
-            <input type="password" id="new_password" name="new_password">
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="new_password" class="text-left">Nova Senha</label>
+                <input type="password" class="form-control" id="new_password" name="new_password" minlength="8" required>
+                <div class="invalid-feedback">
+                    Por favor informe sua senha (mínimo 8 caracteres)
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <label for="confirm" class="text-left">Confirmar nova Senha</label>
+                <input type="password" class="form-control" id="confirm" name="confirm" required>
+                <div class="invalid-feedback">
+                    Por favor informe a confirmação de sua senha
+                </div>
+            </div>
         </div>
 
-        <div>
-            <label for="confirm">Confirmar nova senha</label>
-            <input type="password" id="confirm_password" name="confirm_password">
-        </div>
-
-        <div>
-            <button type="submit" class="btn btn-default">Confirmar</button>
-        </div>
+        <button type="submit" class="btn col-md-1 btn-success">Alterar</button>
+        <a href="/" class="btn col-md-1 btn-secondary" role="button" >Cancelar</a>
     </form>
 </div>
+
+<script src="/js/validation.js"></script>
+
 @endsection

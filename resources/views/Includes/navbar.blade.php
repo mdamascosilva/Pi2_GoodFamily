@@ -10,17 +10,10 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/noticias">Noticias<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/contato">Contato</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/quem-somos">Sobre nós</a>
-            </li>
             <li class="nav-item dropdown">
-
                 @auth
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Bem vindo, {{$user->name}}
+                    Bem vindo, {{$user->nome}}
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="/{{$user->user_type}}/consultar">Consultar</a>
@@ -45,12 +38,17 @@
                 @guest
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/login">Login</a>
-                    <a class="dropdown-item" href="/registrar/apoiador">Quero ajudar</a>
-                    <a class="dropdown-item" href="/registrar/beneficiario">Preciso de auxílio</a>
+                    <a class="dropdown-item" href="/login/apoiador">Quero ajudar</a>
+                    <a class="dropdown-item" href="/login/beneficiario">Preciso de auxílio</a>
                 </div>
                 @endguest
 
+            <li class="nav-item">
+                <a class="nav-link" href="/contato">Contato</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/quem-somos">Sobre nós</a>
+            </li>
             </li>
         </ul>
     </div>

@@ -19,7 +19,7 @@ class BeneficiarioController extends Controller
 
     public function gravar(BeneficiarioRequest $request, BeneficiarioService $beneficiarioService){
         $user = User::findOrFail(Auth::id());
-        $beneficiario = $beneficiarioService->salvar( $user->id, $request );
+        $beneficiario = $beneficiarioService->salvar( $user->id, $user->nome, $request );
         $request->session()->flash(
             'mensagem',
             'Cadastro do beneficiário ' . $beneficiario->nome . ' foi feita com sucesso!'

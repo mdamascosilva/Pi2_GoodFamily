@@ -20,10 +20,7 @@ Alterar dados cadastrados
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="{{ $beneficiario->nome }}" required>
-                <div class="invalid-feedback">
-                    Por favor informe seu nome
-                </div>
+                <input type="text" class="form-control" disabled readonly>
             </div>
 
 
@@ -61,9 +58,12 @@ Alterar dados cadastrados
         </div>
 
         @include('includes.form_endereco', ['usuario' => $beneficiario ])
+        
+        <button type="submit" class="btn btn-success">Alterar</button>
+        <a href="/" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
 
-        <input type="submit" class="btn btn-success" value="Alterar" />
 
+        
     </form>
     @endif
 </div>

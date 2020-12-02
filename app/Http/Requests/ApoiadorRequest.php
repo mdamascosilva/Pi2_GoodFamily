@@ -24,7 +24,6 @@ class ApoiadorRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required',
             'cpf' => 'required',
             'telefone' => 'required',
             'cep' => 'required',

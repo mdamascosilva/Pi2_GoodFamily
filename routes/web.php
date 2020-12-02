@@ -40,9 +40,9 @@ Route::post('/registrar/{opcao}', [UserController::class, 'registrar']);
 
 
 
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/login/{opcao}', [LoginController::class, 'login']);
 
-Route::post('/login', [LoginController::class, 'autenticar']);
+Route::post('/login/{opcao}', [LoginController::class, 'autenticar']);
 
 Route::get('/logout', [LoginController::class, 'logout']);
 

@@ -12,6 +12,10 @@ Suas necessidades
 
 @include('includes.errors', ['errors' => $errors])
 
+
+
+
+
 <div class="lista">
     @foreach($necessidades as $necessidade)
 

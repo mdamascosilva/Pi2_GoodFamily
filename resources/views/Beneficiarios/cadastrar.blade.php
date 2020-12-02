@@ -20,10 +20,7 @@ Agora, precisamos de algumas informações para fazer o cadastro de beneficiári
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" id="nome" name="nome" value="{{ $user->name }}" required>
-                <div class="invalid-feedback">
-                    Por favor informe seu nome
-                </div>
+                <input type="text" class="form-control" value="{{ Auth::user()->nome }}" disabled readonly>
             </div>
 
 
@@ -61,7 +58,8 @@ Agora, precisamos de algumas informações para fazer o cadastro de beneficiári
 
         @include('includes.form_endereco')
 
-        <button type="submit" class="btn btn-success">Cadastrar</button>
+        <button type="submit" class="btn col-sm-1 btn-success">Cadastrar</button>
+        <a href="/" class="btn col-sm-1 btn-secondary" role="button">Cancelar</a>
 
     </form>
 </div>

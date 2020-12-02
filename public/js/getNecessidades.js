@@ -35,22 +35,18 @@ function gerarCardNecessidades(necessidades) {
 
     necessidades.map(function (necessidade) {
         divNecessidades.innerHTML +=
-            '<div class="bloco">' +
-            '<div class="linha">' +
-            '<a href="/necessidades/consultar/' + necessidade.id + '">Detalhes</a>' +
-            '</div>' +
-            '<div class="linha">' +
-            '<p>Categoria</p><p>' + necessidade.categoria + '</p>' +
-            '</div>' +
-            '<div class="linha">' +
-            '<p>Descrição</p><p>' + necessidade.descricao + '</p>' +
-            '</div>' +
-            '<div class="linha">' +
-            '<p>Cidade</p><p>' + necessidade.cidade + '</p>' +
-            '</div>' +
-            '<div class="linha">' +
-            '<p>Bairro</p><p>' + necessidade.bairro + '</p>' +
-            '</div>' +
-            '</div>';
+            '<div class="col-12 col-md-4 mb-4 mt-2">' +
+                '<div class="card h-100 border-light bg-light shadow">' +
+                    '<h6 class="card-header">' + necessidade.categoria + '</h6>' +
+                    '<div class="card-body">' +
+                        '<h5 class="card-title mb-3">' + necessidade.descricao + '</h5>' +
+                        '<p class="card-text">' + necessidade.cidade + ', bairro ' + necessidade.bairro + '</p>' +
+                            '<div class="d-flex align-items-center align-self-end">' +
+                                '<div class="meta-item m-2">' +
+                                '<a href="/registrar/apoiador"><i class="fas fa-heart m-1"></i>Quero ajudar</a>' +
+                            '</div>' +
+                            '<div class="meta-item m-2">' +
+                                '<a href="/necessidades/consultar/' + necessidade.id + '"><i class="fas fa-link m-1"></i>Detalhes</a>' +
+            '</div></div></div></div>';
     });
 }

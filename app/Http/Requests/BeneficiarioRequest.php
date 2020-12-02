@@ -24,7 +24,6 @@ class BeneficiarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required',
             'documento' => 'required',
             'telefone' => 'required',
             'pais_origem' => 'required',

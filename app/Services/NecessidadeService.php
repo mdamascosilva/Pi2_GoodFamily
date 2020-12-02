@@ -140,7 +140,7 @@ class NecessidadeService
             'beneficiarios.bairro as bairro',
         )
         ->inRandomOrder()
-        ->limit(5)
+        ->limit(6)
         ->get();
     }
 }

@@ -14,29 +14,42 @@ Nos informe suas necessidades a seguir!
 
 <div class="form">
 
-    <form action="/necessidades/cadastrar" method="POST">
+    <form class="needs-validation" novalidate action="/necessidades/cadastrar" method="POST">
 
         @csrf
-        <div>
-            <label for="categoria_id">Categoria</label>
-            <select id="categoria_id" name="categoria_id">
-                <option selected disabled>Selecione uma opção</option>
 
-                @foreach($categorias as $categoria)
-                <option key="{{ $categoria->id }}" value="{{ $categoria->id }}">{{ $categoria->categoria}}</option>
-                @endforeach
+        <div class='form-row'>
+            <div class="col-md-3 mb-3">
+                <label class="control-label" for='categoria'>Categoria</label>
 
-            </select>
+                <select class="form-control" id="categoria_id" name="categoria_id" required>
+                    <option value='' selected disabled>Selecione uma opção</option>
+                    @foreach($categorias as $categoria)
+                    <option key="{{ $categoria->id }}" value="{{ $categoria->id }}">{{ $categoria->categoria}}</option>
+                    @endforeach
+                </select>
+                <div class="invalid-feedback">
+                    Por favor informe a categoria da sua necessidade
+                </div>
+            </div>
         </div>
 
-        <div>
-            <p for="descricao">Descrição</p>
-            <textarea name="descricao" id="descricao" rows='10' cols='80' placeholder="Descrição" required></textarea>
+        <div class='form-row'>
+            <div class="col-md-12 mb-3">
+                <label for="descricao">Descrição</label>
+                <textarea class="form-control" name="descricao" id="descricao" rows='2' placeholder="Descreva um pouco da sua necessidade" required></textarea>
+                <div class="invalid-feedback">
+                    Descreva um pouco da sua necessidade
+                </div>
+            </div>
         </div>
 
-        <div>
-            <button type="submit" class="btn btn-default">Salvar</button>
-        </div>
+        <button type="submit" class="btn col-sm-1 btn-success">Cadastrar</button>
+        <a href="/" class="btn col-sm-1 btn-secondary" role="button">Cancelar</a>
+
     </form>
 </div>
+
+<script src="/js/validation.js"></script>
+
 @endsection

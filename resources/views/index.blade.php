@@ -54,38 +54,34 @@ Good Family
 <br/>
 <div class="alguns_casos">
     Alguns casos:
-    @foreach($necessidades as $necessidade)
+    <section class="pt-5 pb-5">
+    <div class="container">
+        <div class="row d-flex">
+            @foreach($necessidades as $necessidade)
+            <div class="col-12 col-md-4 mb-4 mt-2">
+                <div class="card h-100 border-light bg-light shadow">
+                    <h6 class="card-header">{{ $necessidade->categoria }}</h6>
 
-    <div class="bloco">
-        <div class="linha">
-            <a href="/registrar/apoiador">
-                Quero ajudar
-            </a>
-        </div>
+                    <div class="card-body">
+                        <h5 class="card-title mb-3">{{ $necessidade->descricao }}</h5>
+                        <p class="card-text">{{ $necessidade->cidade }}, bairro {{ $necessidade->bairro }}</p>
 
-        <div class="linha">
-            <p>Categoria</p>
-            <p>{{ $necessidade->categoria }}</p>
-        </div>
+                        <div class="d-flex align-items-center align-self-end">
+                            <div class="meta-item m-2">
+                                <a href="/registrar/apoiador"><i class="fas fa-heart m-1"></i>Quero ajudar</a>
+                            </div>
 
-        <div class="linha">
-            <p>Descrição</p>
-            <p>{{ $necessidade->descricao }}</p>
-        </div>
-
-        <div class="linha">
-            <p>Bairro</p>
-            <p>{{ $necessidade->bairro }}</p>
-        </div>
-
-        <div class="linha">
-            <p>Cidade</p>
-            <p>{{ $necessidade->cidade }}</p>
+                            <div class="meta-item m-2">
+                                <a href="/necessidades/consultar/{{ $necessidade->id }}"><i class="fas fa-link m-1"></i>Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
         </div>
     </div>
-
-    <br />
-    @endforeach
+</section>
 </div>
 
 @endsection

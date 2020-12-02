@@ -4,14 +4,14 @@ namespace App\Services;
 
 use App\Http\Requests\BeneficiarioRequest;
 use App\Models\Beneficiario;
-use Illuminate\Support\Facades\Auth;
 
 class BeneficiarioService
 {
 
-    public function salvar(int $id, BeneficiarioRequest $request): Beneficiario {
+    public function salvar(int $id, string $nome, BeneficiarioRequest $request): Beneficiario {
         $beneficiario = new Beneficiario();
         $beneficiario->id = $id;
+        $beneficiario->nome = $nome;
         $beneficiario = $this->getBeneficiario($beneficiario, $request);
         $beneficiario->saveOrFail();
 
@@ -28,7 +28,6 @@ class BeneficiarioService
 
     function getBeneficiario( Beneficiario $beneficiario, BeneficiarioRequest $request) : Beneficiario {
 
-        $beneficiario->nome = $request->get('nome');
         $beneficiario->documento = $request->get('documento');
         $beneficiario->pais_origem = $request->get('pais_origem');
         $beneficiario->telefone = $request->get('telefone');
