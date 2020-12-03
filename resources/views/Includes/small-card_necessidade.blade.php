@@ -30,7 +30,7 @@ $icone_card = [
         <div class="card-footer">
             <div class="d-flex justify-content-between">
                 <div class="meta-item m-1">
-                    <a class="btn btn-info" href="/necessidades/alterar/{{ $necessidade->id }}"><i class="fas fa-edit m-1"></i></a>
+                    <a class="btn btn-info" href="/necessidades/alterar/{{ $necessidade->id }}"><i class="fas fa-pen m-1"></i></a>
                 </div>
 
                 <div class="meta-item m-1">
@@ -41,7 +41,7 @@ $icone_card = [
                         @csrf
                         @method('DELETE')
 
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt m-1"></i></button>
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-trash m-1"></i></button>
                     </form>
                 </div>
             </div>
