@@ -28,7 +28,7 @@ $icone_card = [
 
         @if ($footer)
         <div class="card-footer">
-            <div class="d-flex align-items-center align-self-end">
+            <div class="d-flex justify-content-between">
                 <div class="meta-item m-1">
                     <a class="btn btn-info" href="/necessidades/alterar/{{ $necessidade->id }}"><i class="fas fa-edit m-1"></i></a>
                 </div>

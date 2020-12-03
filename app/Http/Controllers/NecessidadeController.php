@@ -83,7 +83,8 @@ class NecessidadeController extends Controller
             $request->get('cidade'),
             $request->get('bairro')
         );
-        return view('includes.card_necessidade', compact('necessidades'));
+        $login = true;
+        return view('includes.card_necessidade', compact('necessidades', 'login'));
     }
 
     public function detalhes(int $id, NecessidadeService $necessidadeService)

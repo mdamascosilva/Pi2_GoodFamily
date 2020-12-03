@@ -17,7 +17,7 @@ Bem vindo! Selecionamos algumas pessoas que precisam de auxílio próximas de vo
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row d-flex">
-            @include('includes.card_necessidade', ['necessidades' => $necessidades])
+            @include('includes.card_necessidade', ['necessidades' => $necessidades, 'login' => true])
         </div>
     </div>
 </section>

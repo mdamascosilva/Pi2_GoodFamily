@@ -20,7 +20,7 @@ Alterar dados cadastrados
         <div class="form-row">
             <div class="col-md-6 mb-3">
                 <label for="nome">Nome</label>
-                <input type="text" class="form-control" disabled readonly>
+                <input type="text" class="form-control" value="{{ $beneficiario->nome }}" disabled readonly>
             </div>
 
 
@@ -59,8 +59,8 @@ Alterar dados cadastrados
 
         @include('includes.form_endereco', ['usuario' => $beneficiario ])
         
-        <button type="submit" class="btn btn-success">Alterar</button>
-        <a href="/" class="btn btn-light" role="button" style="margin-top: 10px;">Cancelar</a>
+        <button type="submit" class="btn col-sm-2 btn-success">Alterar</button>
+        <a href="/" class="btn col-sm-2 btn-secondary" role="button">Cancelar</a>
 
 
         

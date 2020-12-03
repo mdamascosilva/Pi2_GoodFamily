@@ -55,7 +55,7 @@ Good Family
 <section class="pt-5 pb-5">
     <div class="container">
         <div class="row d-flex">
-            @include('includes.card_necessidade', ['necessidades' => $necessidades])
+            @include('includes.card_necessidade', ['necessidades' => $necessidades, 'login' => false])
         </div>
     </div>
 </section>

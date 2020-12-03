@@ -18,7 +18,7 @@ Good Family - Beneficiario
     <a class="btn btn-success" href="/necessidades/cadastrar">Nos informe o que você precisa</a>
 </section>
 
-<section class="pt-5 pb-2">
+<section class="pt-4 pb-2">
     <h2><a href="/necessidades/listar">Suas necessidades</a></h2>
 </section>
 
