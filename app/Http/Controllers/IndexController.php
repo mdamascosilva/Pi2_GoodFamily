@@ -34,8 +34,10 @@ class IndexController extends Controller
 
     public function beneficiario_index(Request $request)
     {
+        $necessidadeService = new NecessidadeService();
+        $necessidades = $necessidadeService->listarNecessidadesDoBeneficiario();
         $mensagem = $request->session()->get('mensagem');
-        return view('Beneficiarios.index', compact('mensagem'));
+        return view('Beneficiarios.index', compact('mensagem', 'necessidades'));
     }
 
     public function noticias()

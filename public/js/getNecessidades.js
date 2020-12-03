@@ -16,9 +16,7 @@ function getNecessidades() {
         request.onreadystatechange = function () {
 
             if (request.readyState === 4 && request.status == 200) {
-                divNecessidades.innerHTML = '';
-                necessidades = JSON.parse(request.responseText);
-                gerarCardNecessidades(necessidades);
+                divNecessidades.innerHTML = request.responseText;
             } else {
                 divNecessidades.innerHTML = "Erro: " + request.statusText;
             }

@@ -5,7 +5,7 @@
 @endsection
 
 @section('cabecalho')
-Nos informe suas necessidades a seguir!
+Altere a descrição de sua necessidade
 @endsection
 
 @section('conteudo')
@@ -46,7 +46,7 @@ Nos informe suas necessidades a seguir!
             </div>
         </div>
 
-        <button type="submit" class="btn col-sm-1 btn-success">Cadastrar</button>
+        <button type="submit" class="btn col-sm-1 btn-success">Alterar</button>
         <a href="/" class="btn col-sm-1 btn-secondary" role="button">Cancelar</a>
 
     </form>

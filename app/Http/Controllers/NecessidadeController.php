@@ -24,9 +24,7 @@ class NecessidadeController extends Controller
     #post(formulario preenchido)
     public function gravar(NecessidadeRequest $request, NecessidadeService $necessidadeService)
     {
-
         $necessidadeService->salvar($request);
-
         $request->session()->flash(
             'mensagem',
             'Necessidade criada com sucesso!'
@@ -45,7 +43,6 @@ class NecessidadeController extends Controller
     #post(gravar alteração formulario)
     public function atualizar($id, NecessidadeRequest $request, NecessidadeService $necessidadeService)
     {
-
         $necessidadeService->atualizar($id, $request);
         $request->session()->flash(
             'mensagem',
@@ -56,10 +53,8 @@ class NecessidadeController extends Controller
 
     public function excluir(int $id, Request $request)
     {
-
         $necessidade = Necessidade::find($id);
         $necessidade->delete();
-
         $request->session()->flash(
             'mensagem',
             'Necessidade excluída com sucesso'
@@ -78,16 +73,17 @@ class NecessidadeController extends Controller
     public function consultar()
     {
         $categorias = CategoriaNecessidade::all();
-        return view('Necessidades.consultar', compact('categorias'));
+        return view('Necessidades.pesquisar', compact('categorias'));
     }
 
     public function pesquisarNecessidades(Request $request, NecessidadeService $necessidadeService)
     {
-        return $necessidadeService->pesquisarNecessidades(
+        $necessidades = $necessidadeService->pesquisarNecessidades(
             $request->get('categoria'),
             $request->get('cidade'),
             $request->get('bairro')
         );
+        return view('includes.card_necessidade', compact('necessidades'));
     }
 
     public function detalhes(int $id, NecessidadeService $necessidadeService)

@@ -18,7 +18,7 @@ class CategoriaSeed extends Seeder
         CategoriaNecessidade::insert(['categoria'=>'Comida']);
         CategoriaNecessidade::insert(['categoria'=>'Remedio']);
         CategoriaNecessidade::insert(['categoria'=>'Moradia']);
-        CategoriaNecessidade::insert(['categoria'=>'Moveis']);
-        CategoriaNecessidade::insert(['categoria'=>'Utensilios']);
+        CategoriaNecessidade::insert(['categoria'=>'Móveis']);
+        CategoriaNecessidade::insert(['categoria'=>'Utensílios']);
     }
 }
