@@ -5,18 +5,19 @@
 @endsection
 
 @section('cabecalho')
-Meus atendimentos
+Consultar um atendimento
 @endsection
 
 @section('conteudo')
 
 @include('includes.errors', ['errors' => $errors])
 
-<section class="pt-5 pb-5">
+<section class="pt-2 pb-2">
     <div class="container">
         <div class="row d-flex">
-            @include('includes.small-card_atendimento', ['atendimentos' => $atendimentos, 'beneficiario' => false])
+            @include('includes.card_atendimento', ['atendimentos' => $atendimentos, 'beneficiario' => true])
         </div>
     </div>
 </section>
+
 @endsection

@@ -114,7 +114,11 @@ Route::post('/atendimentos/iniciar/{idNecessidade}', [AtendimentoController::cla
 
 Route::get('/atendimentos/listar', [AtendimentoController::class, 'listar']);
 
+Route::get('/atendimentos/listar/beneficiario', [AtendimentoController::class, 'listarDoBeneficiario']);
+
 Route::get('/atendimentos/consultar/{id}', [AtendimentoController::class, 'consultar']);
+
+Route::get('/atendimentos/consultar/beneficiario/{id}', [AtendimentoController::class, 'consultarDoBeneficiario']);
 
 Route::get('/atendimentos/finalizar/{id}', [AtendimentoController::class, 'descreverFinalizacao']);
 

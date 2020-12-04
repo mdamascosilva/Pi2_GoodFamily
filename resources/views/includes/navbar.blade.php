@@ -15,7 +15,7 @@
                 <a class="nav-link" href="/necessidades/listar">Minhas necessidades<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="/necessidades/listar">Antedimentos<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/atendimentos/listar/beneficiario">Atendimentos<span class="sr-only">(current)</span></a>
             </li>
             @endif
 

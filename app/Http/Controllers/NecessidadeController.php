@@ -3,14 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\NecessidadeRequest;
-use App\Models\Apoiador;
 use App\Models\CategoriaNecessidade;
 use App\Models\Necessidade;
-use App\Models\User;
 use App\Services\NecessidadeService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class NecessidadeController extends Controller
 {
@@ -54,7 +50,9 @@ class NecessidadeController extends Controller
     public function excluir(int $id, Request $request)
     {
         $necessidade = Necessidade::find($id);
-        $necessidade->delete();
+
+        $necessidade->ativo = false;
+        $necessidade->save();
         $request->session()->flash(
             'mensagem',
             'Necessidade excluída com sucesso'

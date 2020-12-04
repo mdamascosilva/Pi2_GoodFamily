@@ -17,9 +17,8 @@ class CreateAtendimentosTable extends Migration
             $table->id();
             $table->unsignedBigInteger('necessidade_id');
             $table->unsignedBigInteger('apoiador_id');
-            $table->text('descricao')->nullable();
             $table->timestamps();
-            $table->dateTime('fim_atendimento')->nullable();
+            $table->dateTime('confirmacao')->nullable();
 
             $table->foreign('necessidade_id')
             ->references('id')

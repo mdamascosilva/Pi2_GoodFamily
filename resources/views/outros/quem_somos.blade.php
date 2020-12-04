@@ -9,15 +9,22 @@ Quem somos
 @endsection
 
 @section('conteudo')
+<div class="card mt-4 mb-4">
+    <div class="card-body">
+        <h5>
+            Nosso time possui envolvimento com a área social e é formado por profissionais com experiência e formação em diversas áreas, desde administração e contabilidade até ramos tecnológicos na área de desenvolvimento e infraestrutura de TI bem como das Telecomunicações, o que fortalece consideravelmente o desenvolvimento do projeto.
+        </h5>
+    </div>
+</div>
 
-Nosso time possui envolvimento com a área social e é formado por profissionais com experiência e formação em diversas áreas, desde administração e contabilidade até ramos tecnológicos na área de desenvolvimento e infraestrutura de TI bem como das Telecomunicações, o que fortalece consideravelmente o desenvolvimento do projeto
+
 <div>
     <h3 class="mt-4 mb-4">Equipe</h3>
 </div>
 <div class="card mt-4 mb-4">
     <div class="row no-gutters">
         <div class="col-sm-3" style="background: #ddd;">
-            <img src="images/sample.svg" class="card-img-top h-150" alt="...">
+            <img src="/images/desenvolvedores/alyson.png" class="card-img-top h-150" alt="...">
         </div>
         <div class="col-sm-9">
             <div class="card-body">
@@ -37,7 +44,7 @@ Nosso time possui envolvimento com a área social e é formado por profissionais
             </div>
         </div>
         <div class="col-sm-3" style="background: #ddd;">
-            <img src="images/sample.svg" class="card-img-top h-150" alt="...">
+            <img src="/images/desenvolvedores/lucas.png" class="card-img-top h-150" alt="...">
         </div>
     </div>
 </div>
@@ -45,14 +52,14 @@ Nosso time possui envolvimento com a área social e é formado por profissionais
 <div class="card mt-4 mb-4">
     <div class="row no-gutters">
         <div class="col-sm-3" style="background: #ddd;">
-            <img src="images/sample.svg" class="card-img-top h-150" alt="...">
+            <img src="/images/desenvolvedores/marcelo.png" class="card-img-top h-150" alt="...">
         </div>
         <div class="col-sm-9">
             <div class="card-body">
                 <h5 class="card-title">Marcelo Damasco da Silva</h5>
                 <p class="card-text">Marcelo, 42 anos, casado, pai de um casal de crianças, sendo Kauan com 16 anos e Isadora com 7. Formado em Administração e no curso técnico de Telecomunicações, atuei por 15 anos neste segmento prestando serviços ligados a área de comutação de grandes operadoras nacionais de telefonia.
-Atualmente trabalho como servidor público na Secretaria de Saúde do Estado de Santa Catarina, exercendo a função de técnico de TI em um de seus órgãos, prestando todo suporte de informática aos clientes internos.
-Como hobby gosto de curtir a família e brincar com os filhos, pescar com o pai, além de estar sempre disposto a aprender e a inventar algo nas horas de folga, sendo o próximo projeto a construção de uma chopeira.</p>
+                    Atualmente trabalho como servidor público na Secretaria de Saúde do Estado de Santa Catarina, exercendo a função de técnico de TI em um de seus órgãos, prestando todo suporte de informática aos clientes internos.
+                    Como hobby gosto de curtir a família e brincar com os filhos, pescar com o pai, além de estar sempre disposto a aprender e a inventar algo nas horas de folga, sendo o próximo projeto a construção de uma chopeira.</p>
             </div>
         </div>
     </div>
@@ -63,22 +70,15 @@ Como hobby gosto de curtir a família e brincar com os filhos, pescar com o pai,
         <div class="col-sm-9">
             <div class="card-body">
                 <h5 class="card-title">Ulysses Werlich Borges</h5>
-                <p class="card-text"></p>
+                <p class="card-text">Olá! Sou Ulysses, tenho 24 anos, sou casado com a Priscila Schlemper. Trabalho na everis como desenvolvedor junior em java, e atuo nos projetos do banco Santander. Estou terminando a faculdade de Análise e Desenvolvimento de Sistemas, na USJ, e após isso quero focar na meta de um dia me tornar
+                    professor de programação. Além de ter como hobby a programação, gosto de assistir séries com a minha esposa, de tocar teclado, e de curtir uma boa trilha com destino pra alguma cachoeira. Também amo me envolver nos trabalhos da comunidade cristã no qual faço parte.
+                </p>
             </div>
         </div>
         <div class="col-sm-3" style="background: #ddd;">
-            <img src="images/sample.svg" class="card-img-top h-150" alt="...">
+            <img src="/images/desenvolvedores/ulysses.png" class="card-img-top h-150" alt="...">
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
 
 @endsection

@@ -15,7 +15,7 @@ Consultar um atendimento
 <section class="pt-2 pb-2">
     <div class="container">
         <div class="row d-flex">
-            @include('includes.card_atendimento', ['atendimentos' => $atendimentos])
+            @include('includes.card_atendimento', ['atendimentos' => $atendimentos, 'beneficiario' => false])
         </div>
     </div>
 </section>

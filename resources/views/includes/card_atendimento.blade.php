@@ -32,24 +32,45 @@ $logradouro = $atendimento->rua . ", " . $atendimento->complemento_endereco . " 
             <small class="text-muted">Atendimento</small>
             <p class="card-text">{{ $atendimento->inicio_atendimento }}</p>
 
+            @if ($beneficiario)
+
+            <small class="text-muted">Atendido por</small>
+            <p class="card-text">{{ $atendimento->nome }}</p>
+
+            <small class="text-muted">Telefone</small>
+            <p class="card-text">{{ $atendimento->telefone }}</p>
+
+            @else
+            @if ($atendimento->confirmacao)
+            <small class="text-muted">Confirmado atendimento as</small>
+            <p class="card-text">{{ $atendimento->confirmacao }}</p>
+            @endif
+
             <small class="text-muted">Nome do Beneficiário</small>
             <p class="card-text">{{ $atendimento->nome }}</p>
 
-            <small class="text-muted">Endereço</small>
-            <p class="card-text">{{ $logradouro }}</p>
-
             <small class="text-muted">História</small>
             <p class="card-text">{{ $atendimento->historia }}</p>
+            @endif
 
+            <small class="text-muted">Endereço</small>
+            <p class="card-text">{{ $logradouro }}</p>
         </div>
 
         <div class="card-footer">
             <div class="d-flex">
-
+                @if ($beneficiario)
+                <div class="meta-item m-1">
+                    <form action="/atendimentos/finalizar/{{ $atendimento->id }}" method="POST" onsubmit="return confirm('Deseja finalizar o atendimento?')">
+                        @csrf
+                        <button type="submit" class="btn btn-success"><i class="fas fa-heart m-1"></i>Confirmar atendimento</button>
+                    </form>
+                </div>
+                @else
                 <div class="meta-item m-1">
                     <a class="btn btn-info" target="_blank" href="https://www.google.com/maps?q={{ $logradouro }}"><i class="fas fa-map-marked-alt m-1"></i>Ir para o Maps</a>
                 </div>
-
+                @endif
                 <div class="meta-item m-1">
                     <a class="btn btn-secondary" role="button" href="/"><i class="fas fa-undo-alt m-1"></i>Voltar</a>
                 </div>

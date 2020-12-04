@@ -51,6 +51,9 @@ $logradouro = $necessidade->rua . ", " . $necessidade->complemento_endereco . " 
             <small class="text-muted">Endereço</small>
             <p class="card-text">{{ $logradouro }}</p>
 
+            <small class="text-muted">País de origem</small>
+            <p class="card-text">{{ $necessidade->pais_origem }}</p>
+
             <small class="text-muted">História</small>
             <p class="card-text">{{ $necessidade->historia }}</p>
 
@@ -69,7 +72,6 @@ $logradouro = $necessidade->rua . ", " . $necessidade->complemento_endereco . " 
                 <div class="meta-item m-1">
                     <a class="btn btn-info" target="_blank" href="https://www.google.com/maps?q={{ $logradouro }}"><i class="fas fa-map-marked-alt m-1"></i>Ir para o Maps</a>
                 </div>
-
 
                 <div class="meta-item ml-auto m-1">
                     <a class="btn btn-secondary" role="button" href="/"><i class="fas fa-undo-alt m-1"></i>Voltar</a>

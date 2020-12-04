@@ -25,6 +25,8 @@ $icone_card = [
         <div class="card-body">
             <h5 class="card-title mb-3">{{ $necessidade->descricao }}</h5>
             <p class="card-text">{{ $necessidade->cidade }}, bairro {{ $necessidade->bairro }}</p>
+            <small class="text-muted">País de origem</small>
+            <p class="card-text">{{ $necessidade->pais_origem }}</p>
         </div>
         <div class="card-footer">
             <div class="d-flex">

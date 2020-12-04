@@ -24,9 +24,20 @@ class AtendimentoController extends Controller
         return view('Atendimento.listar', compact('atendimentos'));
     }
 
+    public function listarDoBeneficiario(AtendimentoService $atendimentoService){
+        $idBeneficiario = Auth::id();
+        $atendimentos = $atendimentoService->listarDoBeneficiario($idBeneficiario);
+        return view('Atendimento.listar_do_beneficiario', compact('atendimentos'));
+    }
+
     public function consultar(int $id, AtendimentoService $atendimentoService){
         $atendimentos = $atendimentoService->consultar($id);
         return view('Atendimento.consultar', compact('atendimentos'));
+    }
+
+    public function consultarDoBeneficiario(int $id, AtendimentoService $atendimentoService){
+        $atendimentos = $atendimentoService->consultarDoBeneficiario($id);
+        return view('Atendimento.consultar_do_beneficiario', compact('atendimentos'));
     }
 
     public function descreverFinalizacao(int $id, AtendimentoService $atendimentoService){
@@ -34,40 +45,45 @@ class AtendimentoController extends Controller
     }
 
     public function finalizar(int $id, Request $request, AtendimentoService $atendimentoService){
-        if (Auth::id() == Atendimento::findOrFail($id)->apoiador_id){
-
-            $atendimentoService->finalizar($id, $request->get('descricao'));
-            $request->session()->flash(
-                'mensagem',
-                'Atendimento finalizado com sucesso!'
-            );
+        
+        $atendimentoService->finalizar($id);
+        $request->session()->flash(
+            'mensagem',
+            'Atendimento confirmado com sucesso!'
+        );
+        
+        /*if (Auth::id() == Atendimento::findOrFail($id)->beneficiario_id){
 
         } else {
             $request->session()->flash(
                 'mensagem',
-                'Apoiador inválido para o atendimento'
+                'Usuário inválido para o atendimento'
             );
-        }
+        }*/
 
         return redirect()->route('index');
     }
 
     public function cancelar(int $id, Request $request, AtendimentoService $atendimentoService){
 
-        if (Auth::id() == Atendimento::findOrFail($id)->apoiador_id){
+        $atendimentoService->cancelar($id);
+        $request->session()->flash(
+            'mensagem',
+            'Atendimento cancelado'
+        );
 
-            $atendimentoService->cancelar($id);
-            $request->session()->flash(
-                'mensagem',
-                'Atendimento cancelado'
-            );
+        /*
+        if (Auth::id() == Atendimento::findOrFail($id)->apoiador_id
+            ){
+
+
 
         } else {
             $request->session()->flash(
                 'mensagem',
                 'Apoiador inválido para o atendimento'
             );
-        }
+        }*/
 
         return redirect()->route('index');
     }
