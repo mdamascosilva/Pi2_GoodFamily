@@ -5,7 +5,7 @@
 @endsection
 
 @section('cabecalho')
-Nos informe suas necessidades a seguir!
+Nos informe o que você precisa!
 @endsection
 
 @section('conteudo')
@@ -17,7 +17,6 @@ Nos informe suas necessidades a seguir!
     <form class="needs-validation" novalidate action="/necessidades/cadastrar" method="POST">
 
         @csrf
-
         <div class='form-row'>
             <div class="col-md-3 mb-3">
                 <label class="control-label" for='categoria'>Categoria</label>

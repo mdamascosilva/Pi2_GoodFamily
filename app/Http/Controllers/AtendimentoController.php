@@ -10,10 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class AtendimentoController extends Controller
 {
     
-    public function atender(int $idNecessidade, AtendimentoService $atendimentoService){
-        $atendimento = $atendimentoService->atender($idNecessidade, Auth::id());
-        $id = $atendimento->id;
-        return view('Atendimento.atender', compact('id'));
+    public function atender(int $idNecessidade, Request $request, AtendimentoService $atendimentoService){
+        $atendimentoService->atender($idNecessidade, Auth::id());
+        $request->session()->flash(
+            'mensagem',
+            'Obrigado pelo atendimento da necessidade! Consulte seus atendimento no menu Meus Atendimentos'
+        );
+        return redirect()->route('index');
     }
 
     public function listar(AtendimentoService $atendimentoService){

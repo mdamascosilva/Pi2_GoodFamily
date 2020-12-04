@@ -5,7 +5,8 @@
 @endsection
 
 @section('cabecalho')
-Bem vindo! Selecionamos algumas pessoas que precisam de auxílio próximas de você.
+Bem vindo! </br>
+<h3>Selecionamos algumas pessoas que precisam de auxílio próximas de você.</h3>
 @endsection
 
 @section('conteudo')
@@ -14,7 +15,7 @@ Bem vindo! Selecionamos algumas pessoas que precisam de auxílio próximas de vo
 
 @include('includes.errors', ['errors' => $errors])
 
-<section class="pt-5 pb-5">
+<section class="pb-5">
     <div class="container">
         <div class="row d-flex">
             @include('includes.card_necessidade', ['necessidades' => $necessidades, 'login' => true])

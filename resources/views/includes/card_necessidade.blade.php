@@ -27,19 +27,14 @@ $icone_card = [
             <p class="card-text">{{ $necessidade->cidade }}, bairro {{ $necessidade->bairro }}</p>
         </div>
         <div class="card-footer">
-            <div class="d-flex justify-content-between">
+            <div class="d-flex">
                 @if ($login)
-
-                <div class="meta-item m-1">
+                <div class="meta-item ml-auto m-1">
                     <a href="/necessidades/consultar/{{ $necessidade->id }}"><i class="fas fa-heart m-1" style="color:#f00;"></i>Quero ajudar</a>
                 </div>
 
-                <div class="meta-item m-1">
-                    <a href="/necessidades/consultar/{{ $necessidade->id }}"><i class="fas fa-link m-1"></i>Detalhes</a>
-                </div>
-
                 @else
-                <div class="meta-item m-1">
+                <div class="meta-item ml-auto m-1">
                     <a href="/registrar/apoiador/"><i class="fas fa-heart m-1" style="color:#f00;"></i>Quero ajudar</a>
                 </div>
                 @endif

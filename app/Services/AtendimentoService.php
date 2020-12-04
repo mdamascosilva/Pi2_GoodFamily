@@ -41,6 +41,8 @@ class AtendimentoService
                 'categoria_necessidades.categoria as categoria',
                 'beneficiarios.cidade as cidade',
                 'beneficiarios.bairro as bairro',
+                'beneficiarios.rua as rua',
+                'beneficiarios.complemento_endereco as complemento_endereco'
             )
             ->get();
 
