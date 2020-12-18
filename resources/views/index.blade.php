@@ -137,7 +137,7 @@ Good Family
             <div class="col-12 col-xl-6 col-md-12 mb-4 mt-2">
                 <div class="card shadow border-light">
                     <div class="card-content">
-                        <div class="card-body cleartfix text-black-50" style="background-color: #fefefe;">
+                        <div class="card-body cleartfix text-black-50" style="background-color: #fafafa;">
                             <div class="media align-items-stretch">
                                 <div class="align-self-center">
                                     <h1 class="mr-4 ml-4">{{ $numeros['atendimentos'] }}</h1>
